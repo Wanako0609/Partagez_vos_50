@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'constants.dart';
+import 'homeSection/mainColumn.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,12 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Color(0xFF000000),
-          ),
-          backgroundColor: mbackgroundColor),
+      title: 'Partagez vos 50',
+      theme: MyTheme().theme1,
       home: const MyMainPage(),
     );
   }
@@ -32,21 +29,28 @@ class MyMainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: myAppBar(),
-      body: Container(color: mbackgroundColor),
+      body: const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: MyMainColumn(),
+        ),
+      ),
     );
   }
 
   AppBar myAppBar() {
     return AppBar(
-      title: const Text("Partagez vos 50"),
-      leading: const Icon(Icons.menu),
+      title: const Text(
+        "Partagez vos 50",
+        style: TextStyle(color: mPrimaryColor, fontFamily: "logo"),
+      ),
+      centerTitle: true,
+      leading: const Icon(Icons.menu, color: mIconColor),
       actions: [
         IconButton(
           onPressed: () {},
           tooltip: "Search",
-          icon: const Icon(
-            Icons.search,
-          ),
+          icon: const Icon(Icons.search, color: mIconColor),
         ),
         IconButton(
           onPressed: () {},
@@ -54,12 +58,12 @@ class MyMainPage extends StatelessWidget {
           icon: const Icon(
             Icons.account_circle,
           ),
-          color: Colors.red,
+          color: mPrimaryColor,
         ),
         IconButton(
           onPressed: () {},
           tooltip: "My Bag",
-          icon: const Icon(Icons.shopping_bag),
+          icon: const Icon(Icons.shopping_bag, color: mIconColor),
         ),
       ],
     );
