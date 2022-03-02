@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           appBarTheme: const AppBarTheme(
             backgroundColor: Color(0xFF000000),
           ),
-          backgroundColor: const Color.fromARGB(255, 34, 34, 34)),
+          backgroundColor: mbackgroundColor),
       home: const MyMainPage(),
     );
   }
