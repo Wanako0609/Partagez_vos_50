@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'topclothe.dart';
 import 'package:partagez_vos_50/constants.dart';
 
+import 'package:partagez_vos_50/all_Item/item.dart';
+
 //une partie de la page principal
 class Section extends StatelessWidget {
   const Section({Key? key}) : super(key: key);
@@ -21,7 +23,16 @@ class Section extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(0.0),
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const MyItemPage();
+                        },
+                      ),
+                    );
+                  },
                   icon: const Icon(
                     Icons.more_vert,
                     color: mIconColor,
