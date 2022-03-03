@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/commun/constants.dart';
 import 'package:partagez_vos_50/main.dart';
+import 'package:partagez_vos_50/models/AppUser.dart';
+import '../services/authentication.dart';
 import 'register.dart';
 import 'package:partagez_vos_50/commun/appbar.dart';
 
@@ -29,6 +31,9 @@ class MyLoginColumn extends StatefulWidget {
 }
 
 class _MyLoginColumnState extends State<MyLoginColumn> {
+  //cree l'instance de la BD
+  final AuthenticationService _auth = AuthenticationService();
+
   //variable
   final _emailReturn = TextEditingController();
   final _passwordReturn = TextEditingController();
@@ -74,18 +79,18 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
     }
   }
 
-  void connexion(String email, String password) {
-    String userEmail = "test";
-    String userPassword = "test";
-    if ((email == userEmail) & (password == userPassword)) {
+  void connexion(String email, String password) async {
+    dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+    if (result == 'user-not-found') {
       setState(() {
-        result = "connexion reussi !";
-        gotoHomePage();
+        result = "Aucun utilisateur trouvé";
+      });
+    } else if (result == 'wrong-password') {
+      setState(() {
+        result = "Mauvais mot de passe";
       });
     } else {
-      setState(() {
-        result = "Mauvais Mot de passe ou mauvaise Email";
-      });
+      gotoHomePage();
     }
   }
 

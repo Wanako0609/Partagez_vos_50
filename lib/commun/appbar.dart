@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import '../main.dart';
 import 'package:partagez_vos_50/login_activity/login.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 AppBar myAppBar(BuildContext context) {
   return AppBar(
@@ -29,7 +32,9 @@ AppBar myAppBar(BuildContext context) {
         color: mPrimaryColor,
       ),
       IconButton(
-        onPressed: () {},
+        onPressed: () {
+          _auth.signOut();
+        },
         tooltip: "My Bag",
         icon: const Icon(Icons.shopping_bag, color: mIconColor),
       ),

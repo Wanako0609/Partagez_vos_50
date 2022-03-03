@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "628622489345",
+    "project_id": "partagez-vos-50",
+    "storage_bucket": "partagez-vos-50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:628622489345:android:dc1374cda7aee2b9c60d00",
+        "android_client_info": {
+          "package_name": "fr.partagezVos50.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "628622489345-bln7shhen83cav8ca7s67d28non7em5j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi5SB5mMN2n9l2Xgd8PlttQGjww85JAfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "628622489345-bln7shhen83cav8ca7s67d28non7em5j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

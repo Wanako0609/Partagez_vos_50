@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/commun/constants.dart';
 import 'package:partagez_vos_50/main.dart';
+import 'package:partagez_vos_50/models/AppUser.dart';
+import 'package:partagez_vos_50/services/authentication.dart';
 import 'login.dart';
 import 'package:partagez_vos_50/commun/appbar.dart';
 
@@ -29,6 +31,8 @@ class MyRegisterColumn extends StatefulWidget {
 }
 
 class _MyRegisterColumnState extends State<MyRegisterColumn> {
+  //cree l'instance de la BD
+  final AuthenticationService _auth = AuthenticationService();
   //variable
   final _emailReturn = TextEditingController();
   final _passwordReturn = TextEditingController();
@@ -74,18 +78,22 @@ class _MyRegisterColumnState extends State<MyRegisterColumn> {
     }
   }
 
-  void connexion(String email, String password) {
-    String userEmail = "test";
-    String userPassword = "test";
-    if ((email == userEmail) & (password == userPassword)) {
+  Future<void> connexion(String email, String password) async {
+    dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+    if (result == "email-already-in-use") {
       setState(() {
-        result = "connexion reussi !";
-        gotoHomePage();
+        result = "Un compte utilise deja cette email.";
+      });
+    } else if (result == "weak-password") {
+      setState(() {
+        result = "Le mot de passe est trop faible.";
+      });
+    } else if (result == "Error") {
+      setState(() {
+        result = "Error";
       });
     } else {
-      setState(() {
-        result = "Mauvais Mot de passe ou mauvaise Email";
-      });
+      gotoHomePage();
     }
   }
 
