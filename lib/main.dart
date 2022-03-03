@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
-import 'homeSection/mainColumn.dart';
+import 'commun/constants.dart';
+import 'main_activity/mainColumn.dart';
+import 'commun/appbar.dart';
 
 void main() {
   runApp(const MyApp());

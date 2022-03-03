@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/commun/constants.dart';
 import 'package:partagez_vos_50/main.dart';
-import 'register.dart';
+import 'login.dart';
 import 'package:partagez_vos_50/commun/appbar.dart';
 
-class MyLoginPage extends StatelessWidget {
-  const MyLoginPage({Key? key}) : super(key: key);
+class MyRegisterPage extends StatelessWidget {
+  const MyRegisterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,21 +14,21 @@ class MyLoginPage extends StatelessWidget {
       body: const Padding(
         padding: EdgeInsets.all(20),
         child: SingleChildScrollView(
-          child: MyLoginColumn(),
+          child: MyRegisterColumn(),
         ),
       ),
     );
   }
 }
 
-class MyLoginColumn extends StatefulWidget {
-  const MyLoginColumn({Key? key}) : super(key: key);
+class MyRegisterColumn extends StatefulWidget {
+  const MyRegisterColumn({Key? key}) : super(key: key);
 
   @override
-  State<MyLoginColumn> createState() => _MyLoginColumnState();
+  State<MyRegisterColumn> createState() => _MyRegisterColumnState();
 }
 
-class _MyLoginColumnState extends State<MyLoginColumn> {
+class _MyRegisterColumnState extends State<MyRegisterColumn> {
   //variable
   final _emailReturn = TextEditingController();
   final _passwordReturn = TextEditingController();
@@ -100,12 +100,12 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
     );
   }
 
-  void gotoRegisterPage() {
+  void gotoLoginrPage() {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) {
-          return const MyRegisterPage();
+          return const MyLoginPage();
         },
       ),
     );
@@ -116,7 +116,7 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
     return Column(
       children: [
         const Text(
-          'Connexion',
+          'Création de compte',
           style: TextStyle(fontSize: 40, color: mSecondColor),
         ),
         Padding(
@@ -151,10 +151,9 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
         ),
         ElevatedButton(
           onPressed: () {
-            gotoRegisterPage();
+            gotoLoginrPage();
           },
-          child:
-              const Text('Se crée un compte !', style: TextStyle(fontSize: 15)),
+          child: const Text('Deja un compte ?', style: TextStyle(fontSize: 15)),
         ),
       ],
     );
