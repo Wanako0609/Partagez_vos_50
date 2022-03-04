@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<AppUser>.value(
+    return StreamProvider<AppUser?>.value(
       value: AuthenticationService().user,
-      initialData: AppUser(),
+      initialData: null,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Partagez vos 50',

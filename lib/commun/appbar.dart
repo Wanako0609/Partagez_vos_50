@@ -1,12 +1,27 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:partagez_vos_50/services/authentication.dart';
+import 'package:provider/provider.dart';
+import '../models/AppUser.dart';
 import 'constants.dart';
 import '../main.dart';
 import 'package:partagez_vos_50/login_activity/login.dart';
 
-final FirebaseAuth _auth = FirebaseAuth.instance;
+final AuthenticationService _auth = AuthenticationService();
 
 AppBar myAppBar(BuildContext context) {
+  Color colorUser = const Color.fromARGB(255, 255, 73, 73);
+
+  final user = Provider.of<AppUser?>(context);
+
+  bool connected;
+
+  if (user == null) {
+    connected = false;
+  } else {
+    connected = true;
+  }
+
   return AppBar(
     title: TextButton(
       onPressed: () {
@@ -21,25 +36,91 @@ AppBar myAppBar(BuildContext context) {
     centerTitle: true,
     leading: const Icon(Icons.menu, color: mIconColor),
     actions: [
-      IconButton(
-        onPressed: () {
-          gotoLoginPage(context);
-        },
-        tooltip: "Mon compte",
-        icon: const Icon(
-          Icons.account_circle,
+      connected ? AccountMenu() : IconAccount(colorUser: colorUser),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: IconButton(
+          onPressed: () {},
+          tooltip: "My Bag",
+          icon: const Icon(Icons.shopping_bag, color: mIconColor),
         ),
-        color: mPrimaryColor,
-      ),
-      IconButton(
-        onPressed: () {
-          _auth.signOut();
-        },
-        tooltip: "My Bag",
-        icon: const Icon(Icons.shopping_bag, color: mIconColor),
       ),
     ],
   );
+}
+
+class IconAccount extends StatelessWidget {
+  const IconAccount({
+    Key? key,
+    required this.colorUser,
+  }) : super(key: key);
+
+  final Color colorUser;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        gotoLoginPage(context);
+      },
+      tooltip: "Mon compte",
+      icon: const Icon(
+        Icons.person,
+      ),
+      color: Colors.white,
+    );
+  }
+}
+
+class AccountMenu extends StatelessWidget {
+  const AccountMenu({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: PopupMenuButton(
+        offset: const Offset(0, 50),
+        elevation: 50,
+        color: mBackgroundColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        tooltip: 'Deconnection',
+        child: const Icon(
+          Icons.person,
+          color: mPrimaryColor,
+        ),
+        itemBuilder: (context) => [
+          PopupMenuItem(
+            child: Row(
+              children: const [
+                Icon(Icons.account_box),
+                Text(
+                  "Mon profil",
+                  style: TextStyle(color: mTextColor),
+                )
+              ],
+            ),
+          ),
+          PopupMenuItem(
+            onTap: () {
+              _auth.signOutUser();
+            },
+            child: Row(
+              children: const [
+                Icon(Icons.logout),
+                Text(
+                  "Deconnection",
+                  style: TextStyle(color: mTextColor),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 void gotoHomePage(BuildContext context) {

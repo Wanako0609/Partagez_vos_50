@@ -80,17 +80,27 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
   }
 
   void connexion(String email, String password) async {
-    dynamic result = await _auth.signInWithEmailAndPassword(email, password);
-    if (result == 'user-not-found') {
+    dynamic resultconnection =
+        await _auth.signInUserWithEmailAndPassword(email, password);
+
+    if (resultconnection == 'user-not-found') {
       setState(() {
         result = "Aucun utilisateur trouvé";
       });
-    } else if (result == 'wrong-password') {
+    } else if (resultconnection == 'wrong-password') {
       setState(() {
         result = "Mauvais mot de passe";
       });
-    } else {
+    } else if (resultconnection is AppUser) {
+      print("Connection reussit");
+      setState(() {
+        result = "Connection reussit";
+      });
       gotoHomePage();
+    } else {
+      setState(() {
+        result = "Ce n'est pas une adresse mail";
+      });
     }
   }
 

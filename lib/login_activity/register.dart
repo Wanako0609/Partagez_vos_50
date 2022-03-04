@@ -78,21 +78,23 @@ class _MyRegisterColumnState extends State<MyRegisterColumn> {
     }
   }
 
-  Future<void> connexion(String email, String password) async {
-    dynamic result = await _auth.registerWithEmailAndPassword(email, password);
-    if (result == "email-already-in-use") {
+  void connexion(String email, String password) async {
+    dynamic resultconnection =
+        await _auth.registerWithEmailAndPassword(email, password);
+
+    if (resultconnection == "email-already-in-use") {
       setState(() {
         result = "Un compte utilise deja cette email.";
       });
-    } else if (result == "weak-password") {
+    } else if (resultconnection == "Error") {
       setState(() {
-        result = "Le mot de passe est trop faible.";
+        result = "Ce n'est pas une adresse valide";
       });
-    } else if (result == "Error") {
+    } else if (resultconnection == AppUser) {
+      print("Enregistrement reussit");
       setState(() {
-        result = "Error";
+        result = "Enregistrement reussit";
       });
-    } else {
       gotoHomePage();
     }
   }
