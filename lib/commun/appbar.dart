@@ -29,6 +29,7 @@ AppBar myAppBar(BuildContext context) {
       },
       child: const Text(
         "Partagez vos 50",
+        textAlign: TextAlign.center,
         style:
             TextStyle(color: mPrimaryColor, fontFamily: "logo", fontSize: 20),
       ),
@@ -36,7 +37,7 @@ AppBar myAppBar(BuildContext context) {
     centerTitle: true,
     leading: const Icon(Icons.menu, color: mIconColor),
     actions: [
-      connected ? AccountMenu() : IconAccount(colorUser: colorUser),
+      connected ? const AccountMenu() : IconAccount(colorUser: colorUser),
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: IconButton(
@@ -79,46 +80,42 @@ class AccountMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: PopupMenuButton(
-        offset: const Offset(0, 50),
-        elevation: 50,
-        color: mBackgroundColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-        tooltip: 'Deconnection',
-        child: const Icon(
-          Icons.person,
-          color: mPrimaryColor,
-        ),
-        itemBuilder: (context) => [
-          PopupMenuItem(
-            child: Row(
-              children: const [
-                Icon(Icons.account_box),
-                Text(
-                  "Mon profil",
-                  style: TextStyle(color: mTextColor),
-                )
-              ],
-            ),
-          ),
-          PopupMenuItem(
-            onTap: () {
-              _auth.signOutUser();
-            },
-            child: Row(
-              children: const [
-                Icon(Icons.logout),
-                Text(
-                  "Deconnection",
-                  style: TextStyle(color: mTextColor),
-                ),
-              ],
-            ),
-          ),
-        ],
+    return PopupMenuButton(
+      offset: const Offset(0, 50),
+      color: mBackgroundColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+      tooltip: 'Parametre',
+      child: const Icon(
+        Icons.person,
+        color: mPrimaryColor,
       ),
+      itemBuilder: (context) => [
+        PopupMenuItem(
+          child: Row(
+            children: const [
+              Icon(Icons.account_box),
+              Text(
+                "Mon profil",
+                style: TextStyle(color: mTextColor),
+              )
+            ],
+          ),
+        ),
+        PopupMenuItem(
+          onTap: () {
+            _auth.signOutUser();
+          },
+          child: Row(
+            children: const [
+              Icon(Icons.logout),
+              Text(
+                "Deconnection",
+                style: TextStyle(color: mTextColor),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
