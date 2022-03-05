@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:partagez_vos_50/main_activity/mainPage.dart';
 
-import 'topclothe.dart';
+import '../models/Produit.dart';
+import 'ListOfProducts.dart';
 import 'package:partagez_vos_50/commun/constants.dart';
 
-import 'package:partagez_vos_50/all_Item/item.dart';
+import 'package:partagez_vos_50/produits_activity/item.dart';
 
 //une partie de la page principal
 class Section extends StatelessWidget {
-  const Section({Key? key}) : super(key: key);
+  Section(
+      {this.title = "Titre de colone",
+      this.listItem = const MyMainColumn(),
+      required this.produits});
+
+  //listItem et produits doivent etre le meme !
+  final String title;
+  final List<Produit> produits;
+  Widget listItem;
 
   @override
   Widget build(BuildContext context) {
@@ -15,32 +25,32 @@ class Section extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Text(
-              "Nos Hauts",
-              style: TextStyle(color: mTextColor, fontSize: 20),
+            Text(
+              title,
+              style: const TextStyle(color: mTextColor, fontSize: 20),
             ),
             const Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(0.0),
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const MyItemPage();
-                        },
-                      ),
-                    );
-                  },
-                  icon: const Icon(
-                    Icons.more_vert,
-                    color: mIconColor,
-                  )),
-            )
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return MyItemPage(
+                        produits: produits,
+                      );
+                    },
+                  ),
+                );
+              },
+              icon: const Icon(
+                Icons.more_vert,
+                color: mIconColor,
+              ),
+            ),
           ],
         ),
-        TopClothe(height: 150)
+        listItem
       ],
     );
   }

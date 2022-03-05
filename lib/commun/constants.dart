@@ -11,6 +11,24 @@ const mIconColor = Color(0xFFFFFFFF);
 
 const mTextFieldBackgroundColor = Color.fromARGB(255, 126, 126, 126);
 
+const mPriceColor = Color.fromARGB(255, 56, 56, 56);
+const mTextMainPriceColor = Color.fromARGB(255, 255, 0, 0);
+
+const mTextTitleProduit = TextStyle(
+    color: Color(0xFFFFFFFF),
+    fontFamily: "logo",
+    fontWeight: FontWeight.bold,
+    fontSize: 20);
+
+const mTextDescriptionProduit =
+    TextStyle(color: Color.fromARGB(255, 201, 201, 201), fontSize: 15);
+
+const mTextPriceProduit = TextStyle(
+    color: mPrimaryColor,
+    fontFamily: "logo",
+    fontWeight: FontWeight.bold,
+    fontSize: 20);
+
 class MyTheme {
   final theme1 = ThemeData(
     splashColor: mPrimaryColor,

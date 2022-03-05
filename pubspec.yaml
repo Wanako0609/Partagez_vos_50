@@ -54,6 +54,9 @@ flutter:
   assets:
     - assets/
     - assets/fonts/
+    - assets/image_test/
+    - assets/image_jean/
+    - assets/image_veste/
 
   fonts:
     - family: body

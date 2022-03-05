@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'commun/constants.dart';
-import 'main_activity/mainColumn.dart';
+import 'main_activity/mainPage.dart';
 import 'commun/appbar.dart';
 
 void main() async {
