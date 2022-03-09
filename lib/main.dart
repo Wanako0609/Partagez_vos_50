@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/models/AppUser.dart';
 import 'package:partagez_vos_50/services/authentication.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'commun/constants.dart';
@@ -11,7 +10,13 @@ import 'commun/appbar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+        apiKey: "AIzaSyDHtS3Amn_vdx6Jx0GaS-zGpSuSu0Qvqgg",
+        appId: "1:628622489345:web:d7eb9635e17af5abc60d00",
+        messagingSenderId: "628622489345",
+        projectId: "partagez-vos-50"),
+  );
   runApp(const MyApp());
 }
 

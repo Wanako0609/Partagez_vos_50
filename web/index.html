@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -27,11 +28,12 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>Partagez_Vos_50</title>
   <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
@@ -100,5 +102,25 @@
       loadMainDartJs();
     }
   </script>
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDHtS3Amn_vdx6Jx0GaS-zGpSuSu0Qvqgg",
+      authDomain: "partagez-vos-50.firebaseapp.com",
+      projectId: "partagez-vos-50",
+      storageBucket: "partagez-vos-50.appspot.com",
+      messagingSenderId: "628622489345",
+      appId: "1:628622489345:web:d7eb9635e17af5abc60d00"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
 </body>
+
 </html>
