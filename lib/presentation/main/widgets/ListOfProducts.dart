@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/commun/constants.dart';
-import 'package:partagez_vos_50/models/Produit.dart';
+import 'package:partagez_vos_50/presentation/commun/constants.dart';
+import 'package:partagez_vos_50/data/models/Produit.dart';
 
 //firebase link
 class ListOfProduits extends StatelessWidget {

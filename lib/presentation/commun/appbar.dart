@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/services/authentication.dart';
+import 'package:partagez_vos_50/data/bdd/auth/authentication.dart';
 import 'package:provider/provider.dart';
-import '../models/AppUser.dart';
+import '../../data/models/AppUser.dart';
 import 'constants.dart';
-import '../main.dart';
-import 'package:partagez_vos_50/login_activity/login.dart';
+import '../../main.dart';
+import 'package:partagez_vos_50/presentation/connection/screen/login.dart';
 
 final AuthenticationService _auth = AuthenticationService();
 

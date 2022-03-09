@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:partagez_vos_50/models/AppUser.dart';
+import 'package:partagez_vos_50/data/bdd/firestore/users_collec/database_user.dart';
+import 'package:partagez_vos_50/data/models/AppUser.dart';
 
 class AuthenticationService {
   //instancie firebase
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   AppUser? _userFromFirebaseUser(User? user) {
-    // ignore: unnecessary_null_comparison
     if (user != null) {
       return AppUser(uid: user.uid);
     } else {
@@ -47,9 +47,16 @@ class AuthenticationService {
           .createUserWithEmailAndPassword(email: email, password: password);
       User? user = userCredential.user;
 
-      // TODO store new user in fireStore
+      if (user == null) {
+        throw Exception("No user found");
+      } else {
+        await DatabaseUsers(uid: user.uid).saveName("test");
+        await DatabaseUsers(uid: user.uid).saveAddress(address);
 
-      return _userFromFirebaseUser(user);
+        //TODO
+
+        return _userFromFirebaseUser(user);
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         print('Un compte utilise deja cette email.');

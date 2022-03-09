@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/models/AppUser.dart';
-import 'package:partagez_vos_50/services/authentication.dart';
+import 'package:partagez_vos_50/data/models/AppUser.dart';
+import 'package:partagez_vos_50/data/bdd/auth/authentication.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'commun/constants.dart';
-import 'main_activity/mainPage.dart';
-import 'commun/appbar.dart';
+import 'presentation/commun/constants.dart';
+import 'presentation/main/screen/mainPage.dart';
+import 'presentation/commun/appbar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/commun/constants.dart';
-import 'package:partagez_vos_50/commun/appbar.dart';
+import 'package:partagez_vos_50/presentation/commun/constants.dart';
+import 'package:partagez_vos_50/presentation/commun/appbar.dart';
 
-import '../models/Produit.dart';
+import '../../../data/models/Produit.dart';
 
 class MyItemPage extends StatelessWidget {
   MyItemPage({this.height = 150, this.width = 150, required this.produits});

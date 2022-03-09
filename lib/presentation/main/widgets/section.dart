@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/main_activity/mainPage.dart';
+import 'package:partagez_vos_50/presentation/main/screen/mainPage.dart';
 
-import '../models/Produit.dart';
+import '../../../data/models/Produit.dart';
 import 'ListOfProducts.dart';
-import 'package:partagez_vos_50/commun/constants.dart';
+import 'package:partagez_vos_50/presentation/commun/constants.dart';
 
-import 'package:partagez_vos_50/produits_activity/item.dart';
+import 'package:partagez_vos_50/presentation/all_item/screen/item.dart';
 
 //une partie de la page principal
 class Section extends StatelessWidget {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'ListOfProducts.dart';
-import 'listItemData/pants.dart';
-import 'listItemData/veste.dart';
-import 'section.dart';
-import 'listItemData/top.dart';
+import '../viewmodel/pants.dart';
+import '../widgets/ListOfProducts.dart';
+import '../viewmodel/veste.dart';
+import '../widgets/section.dart';
+import '../viewmodel/top.dart';
 
 //page principal
 class MyMainColumn extends StatelessWidget {
