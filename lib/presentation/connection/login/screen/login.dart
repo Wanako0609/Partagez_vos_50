@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
 import 'package:partagez_vos_50/main.dart';
 import 'package:partagez_vos_50/data/models/AppUser.dart';
-import '../../../data/bdd/auth/authentication.dart';
-import 'register.dart';
+import '../../../../data/bdd/auth/authentication.dart';
+import '../../register/screen/register.dart';
 import 'package:partagez_vos_50/presentation/commun/appbar.dart';
 
 class MyLoginPage extends StatelessWidget {
@@ -105,25 +105,11 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
   }
 
   void gotoHomePage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return const MyMainPage();
-        },
-      ),
-    );
+    Navigator.pushNamed(context, '/');
   }
 
   void gotoRegisterPage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return const MyRegisterPage();
-        },
-      ),
-    );
+    Navigator.pushNamed(context, '/register');
   }
 
   @override

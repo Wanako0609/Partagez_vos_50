@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../data/models/AppUser.dart';
 import 'constants.dart';
 import '../../main.dart';
-import 'package:partagez_vos_50/presentation/connection/screen/login.dart';
+import 'package:partagez_vos_50/presentation/connection/login/screen/login.dart';
 
 final AuthenticationService _auth = AuthenticationService();
 
@@ -120,23 +120,9 @@ class AccountMenu extends StatelessWidget {
 }
 
 void gotoHomePage(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) {
-        return const MyMainPage();
-      },
-    ),
-  );
+  Navigator.pushNamed(context, '/');
 }
 
 void gotoLoginPage(BuildContext context) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) {
-        return const MyLoginPage();
-      },
-    ),
-  );
+  Navigator.pushNamed(context, '/login');
 }

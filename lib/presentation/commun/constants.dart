@@ -33,6 +33,9 @@ class MyTheme {
   final theme1 = ThemeData(
     splashColor: mPrimaryColor,
     primaryColor: mPrimaryColor,
+    colorScheme: const ColorScheme.light(
+      primary: mPrimaryColor,
+    ),
     appBarTheme: const AppBarTheme(
       backgroundColor: mAppBarBackgroundColor,
     ),

@@ -3,7 +3,7 @@ import 'package:partagez_vos_50/presentation/commun/constants.dart';
 import 'package:partagez_vos_50/main.dart';
 import 'package:partagez_vos_50/data/models/AppUser.dart';
 import 'package:partagez_vos_50/data/bdd/auth/authentication.dart';
-import 'login.dart';
+import '../../login/screen/login.dart';
 import 'package:partagez_vos_50/presentation/commun/appbar.dart';
 
 class MyRegisterPage extends StatelessWidget {
@@ -100,25 +100,11 @@ class _MyRegisterColumnState extends State<MyRegisterColumn> {
   }
 
   void gotoHomePage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return const MyMainPage();
-        },
-      ),
-    );
+    Navigator.pushNamed(context, '/');
   }
 
   void gotoLoginrPage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return const MyLoginPage();
-        },
-      ),
-    );
+    Navigator.pushNamed(context, '/login');
   }
 
   @override

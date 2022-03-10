@@ -102,6 +102,8 @@
   </script>
   <script type="module">
 
+    import firebase from "firebase/app"
+
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
@@ -116,8 +118,9 @@
       appId: "1:628622489345:web:d7eb9635e17af5abc60d00"
     };
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
+    export default !firebase.apps.length ?
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig) : firebase.app();
   </script>
 </body>
 
