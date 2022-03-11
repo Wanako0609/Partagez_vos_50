@@ -29,46 +29,51 @@ const mTextPriceProduit = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 20);
 
+const mTextStepName = TextStyle(color: mTextColor);
+
 class MyTheme {
   final theme1 = ThemeData(
-    splashColor: mPrimaryColor,
-    primaryColor: mPrimaryColor,
-    colorScheme: const ColorScheme.light(
-      primary: mPrimaryColor,
-    ),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: mAppBarBackgroundColor,
-    ),
-    scaffoldBackgroundColor: mBackgroundColor,
-    fontFamily: "body",
-    //text field theme
-    inputDecorationTheme: const InputDecorationTheme(
-      errorStyle: TextStyle(color: mErrorColor),
-      hoverColor: mPrimaryColor,
-      focusColor: mPrimaryColor,
-      counterStyle: TextStyle(color: mTextColor),
-      hintStyle: TextStyle(color: mTextColor),
-      fillColor: mTextFieldBackgroundColor,
-      filled: true,
-      errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: mErrorColor, width: 2),
-        borderRadius: BorderRadius.all(
-          Radius.circular(30),
+      splashColor: mPrimaryColor,
+      primaryColor: mPrimaryColor,
+      canvasColor: mBackgroundColor,
+      colorScheme: const ColorScheme.light(
+        primary: mPrimaryColor,
+      ),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: mAppBarBackgroundColor,
+      ),
+      //scaffold background
+      scaffoldBackgroundColor: mBackgroundColor,
+      //font family
+      fontFamily: "body",
+      //text field theme
+      inputDecorationTheme: const InputDecorationTheme(
+        errorStyle: TextStyle(color: mErrorColor),
+        focusColor: mPrimaryColor,
+        counterStyle: TextStyle(color: mTextColor),
+        hintStyle: TextStyle(color: mTextColor),
+        fillColor: mTextFieldBackgroundColor,
+        filled: true,
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: mErrorColor, width: 2),
+          borderRadius: BorderRadius.all(
+            Radius.circular(30),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: mPrimaryColor, width: 2),
+          borderRadius: BorderRadius.all(
+            Radius.circular(30),
+          ),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(30)),
         ),
       ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: mPrimaryColor, width: 2),
-        borderRadius: BorderRadius.all(
-          Radius.circular(30),
-        ),
+      //btn theme
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(primary: mSecondColor),
       ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(30)),
-      ),
-    ),
-    //btn theme
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(primary: mSecondColor),
-    ),
-  );
+      textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(primary: mSecondColor)));
 }

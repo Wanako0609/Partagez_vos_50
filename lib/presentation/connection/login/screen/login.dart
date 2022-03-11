@@ -3,7 +3,7 @@ import 'package:partagez_vos_50/presentation/commun/constants.dart';
 import 'package:partagez_vos_50/main.dart';
 import 'package:partagez_vos_50/data/models/AppUser.dart';
 import '../../../../data/bdd/auth/authentication.dart';
-import '../../register/screen/register.dart';
+import '../../waiting/register.dart';
 import 'package:partagez_vos_50/presentation/commun/appbar.dart';
 
 class MyLoginPage extends StatelessWidget {

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../commun/constants.dart';
 
 class AccountWidget extends StatefulWidget {
-  AccountWidget({required this.emailReturn, required this.passwordReturn});
+  // ignore: use_key_in_widget_constructors
+  const AccountWidget(
+      {required this.emailReturn, required this.passwordReturn});
 
   final TextEditingController passwordReturn;
   final TextEditingController emailReturn;
@@ -62,7 +64,8 @@ class _AccountWidgetState extends State<AccountWidget> {
       children: [
         const Text(
           'Création de compte',
-          style: TextStyle(fontSize: 40, color: mSecondColor),
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 35, color: mSecondColor),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0),
