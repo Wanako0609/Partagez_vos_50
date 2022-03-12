@@ -5,6 +5,12 @@ class AppUser {
   final String? name;
   final String? panier;
   final Address? address;
+  final bool isAdmin;
 
-  AppUser({this.uid = "", this.name, this.panier, this.address});
+  AppUser(
+      {this.uid = "",
+      this.name,
+      this.panier,
+      this.address,
+      this.isAdmin = false});
 }

@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
 import 'package:partagez_vos_50/presentation/connection/register/widgets/account.dart';
+import 'package:partagez_vos_50/presentation/connection/register/widgets/addressLocation.dart';
+import 'package:partagez_vos_50/presentation/connection/register/widgets/verify.dart';
 
 import '../../../commun/appbar.dart';
+
+//controleur
+var emailReturn = TextEditingController();
+var passwordReturn = TextEditingController();
+var rueReturn = TextEditingController();
+var postalCodeReturn = TextEditingController();
+var villeReturn = TextEditingController();
+var prenomReturn = TextEditingController();
+var nomReturn = TextEditingController();
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -12,10 +23,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  //controleur
-  var emailReturn = TextEditingController();
-  var passwordReturn = TextEditingController();
-
   //step params
   int currentStep = 0;
   final isLastStep = 2;
@@ -47,6 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
           onStepCancel: () {
             if (currentStep > 0) {
               setState(() => currentStep -= 1);
+              print("object");
             }
           },
           //custom btn
@@ -57,19 +65,28 @@ class _RegisterPageState extends State<RegisterPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: TextButton(
-                        onPressed: details.onStepCancel,
-                        child: const Text("Retour",
-                            style: TextStyle(fontSize: 15)),
-                      ),
-                    ),
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: details.onStepContinue,
-                        child: const Text("Suite"),
-                      ),
-                    ),
+                    currentStep == 0
+                        ? Container()
+                        : Expanded(
+                            child: TextButton(
+                              onPressed: details.onStepCancel,
+                              child: const Text("Retour",
+                                  style: TextStyle(fontSize: 15)),
+                            ),
+                          ),
+                    currentStep == isLastStep
+                        ? Expanded(
+                            child: ElevatedButton(
+                              onPressed: details.onStepContinue,
+                              child: const Text("Enregistrement !"),
+                            ),
+                          )
+                        : Expanded(
+                            child: ElevatedButton(
+                              onPressed: details.onStepContinue,
+                              child: const Text("Suite"),
+                            ),
+                          ),
                   ],
                 ),
                 const SizedBox(
@@ -107,17 +124,19 @@ class _RegisterPageState extends State<RegisterPage> {
               emailReturn: emailReturn, passwordReturn: passwordReturn),
         ),
         Step(
-            isActive: currentStep >= 1,
-            state: currentStep <= 1 ? StepState.editing : StepState.complete,
-            title: const Text(
-              'Adresse',
-              style: mTextStepName,
-            ),
-            content: Container(
-              height: 200,
-              width: 500,
-              child: Text(emailReturn.text),
-            )),
+          isActive: currentStep >= 1,
+          state: currentStep <= 1 ? StepState.editing : StepState.complete,
+          title: const Text(
+            'Adresse',
+            style: mTextStepName,
+          ),
+          content: AddressFormWidget(
+              rueReturn: rueReturn,
+              postalCodeReturn: postalCodeReturn,
+              villeReturn: villeReturn,
+              prenomReturn: prenomReturn,
+              nomReturn: nomReturn),
+        ),
         Step(
             isActive: currentStep >= 2,
             state: currentStep <= 2 ? StepState.editing : StepState.complete,
@@ -125,9 +144,8 @@ class _RegisterPageState extends State<RegisterPage> {
               'Complete',
               style: mTextStepName,
             ),
-            content: Container(
-              height: 200,
-              width: 500,
+            content: VerifyPage(
+              email: emailReturn.text,
             )),
       ];
 }

@@ -84,25 +84,6 @@ class _AccountWidgetState extends State<AccountWidget> {
             obscureText: true,
           ),
         ),
-        ElevatedButton(
-          onPressed: (() {
-            voidfield(widget.emailReturn.text, widget.passwordReturn.text);
-          }),
-          child: const Text("Connexion", style: TextStyle(fontSize: 15)),
-        ),
-        Text(
-          result,
-          style: const TextStyle(color: Colors.red),
-        ),
-        const Divider(
-          thickness: 2,
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/login');
-          },
-          child: const Text('Deja un compte ?', style: TextStyle(fontSize: 15)),
-        ),
       ],
     );
   }

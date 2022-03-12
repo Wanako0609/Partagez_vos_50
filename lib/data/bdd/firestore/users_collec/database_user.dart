@@ -28,7 +28,11 @@ class DatabaseUsers {
     var data = snapshot.data();
     if (data == null) throw Exception("user not found");
     Address userAddress = Address(
-        rue: data["Rue"], codePostal: data["Code Postal"], ville: data["Pays"]);
+        rue: data["Rue"],
+        codePostal: data["Code Postal"],
+        ville: data["Pays"],
+        nom: '',
+        prenom: '');
     return AppUser(uid: uid, name: data["name"], address: userAddress);
   }
 
