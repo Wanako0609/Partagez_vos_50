@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:partagez_vos_50/data/bdd/firestore/users_collec/database_user.dart';
-import 'package:partagez_vos_50/data/models/Addresse.dart';
 import 'package:partagez_vos_50/data/models/AppUser.dart';
 
 class AuthenticationService {
@@ -42,7 +41,8 @@ class AuthenticationService {
   }
 
   //methode a appeler pour utiliser se connecter
-  Future registerWithEmailAndPassword(String email, String password) async {
+  Future registerWithEmailAndPassword(
+      AppUser appUser, String email, String password) async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
@@ -51,8 +51,7 @@ class AuthenticationService {
       if (user == null) {
         throw Exception("No user found");
       } else {
-        //await DatabaseUsers(uid: user.uid).saveName("test");
-        //await DatabaseUsers(uid: user.uid).saveAddress(address);
+        await DatabaseUsers(uid: user.uid).createUser(appUser);
 
         return _userFromFirebaseUser(user);
       }

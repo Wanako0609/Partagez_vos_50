@@ -71,15 +71,16 @@ class _AccountWidgetState extends State<AccountWidget> {
           padding: const EdgeInsets.symmetric(vertical: 20.0),
           child: TextField(
             decoration: InputDecoration(
-                hintText: "Email", errorText: errorEmailMessage),
+                labelText: "Email", errorText: errorEmailMessage),
             controller: widget.emailReturn,
+            keyboardType: TextInputType.emailAddress,
           ),
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 20),
           child: TextField(
             decoration: InputDecoration(
-                hintText: "Mot de passe", errorText: errorPasswordMessage),
+                errorText: errorPasswordMessage, labelText: "Mot de passe"),
             controller: widget.passwordReturn,
             obscureText: true,
           ),

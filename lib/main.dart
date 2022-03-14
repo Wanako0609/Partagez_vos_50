@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/data/models/AppUser.dart';
 import 'package:partagez_vos_50/data/bdd/auth/authentication.dart';
-import 'package:partagez_vos_50/presentation/all_item/screen/item.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
-import 'package:partagez_vos_50/main.dart';
 import 'package:partagez_vos_50/data/models/AppUser.dart';
+import 'package:time/time.dart';
 import '../../../../data/bdd/auth/authentication.dart';
-import '../../waiting/register.dart';
 import 'package:partagez_vos_50/presentation/commun/appbar.dart';
+
+import '../../../commun/customToast.dart';
 
 class MyLoginPage extends StatelessWidget {
   const MyLoginPage({Key? key}) : super(key: key);
@@ -93,23 +94,14 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
       });
     } else if (resultconnection is AppUser) {
       print("Connection reussit");
-      setState(() {
-        result = "Connection reussit";
-      });
-      gotoHomePage();
+      successToast(context, "Connection reussit !", "");
+      await 4.seconds.delay;
+      Navigator.pushNamed(context, '/');
     } else {
       setState(() {
-        result = "Ce n'est pas une adresse mail";
+        result = "Ce n'est pas une adresse mail valide";
       });
     }
-  }
-
-  void gotoHomePage() {
-    Navigator.pushNamed(context, '/');
-  }
-
-  void gotoRegisterPage() {
-    Navigator.pushNamed(context, '/register');
   }
 
   @override
@@ -123,10 +115,10 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0),
           child: TextField(
-            decoration: InputDecoration(
-                hintText: "Email", errorText: errorEmailMessage),
-            controller: _emailReturn,
-          ),
+              decoration: InputDecoration(
+                  hintText: "Email", errorText: errorEmailMessage),
+              controller: _emailReturn,
+              keyboardType: TextInputType.emailAddress),
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 20),
@@ -152,7 +144,7 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
         ),
         ElevatedButton(
           onPressed: () {
-            gotoRegisterPage();
+            Navigator.pushNamed(context, '/register');
           },
           child:
               const Text('Se crée un compte !', style: TextStyle(fontSize: 15)),

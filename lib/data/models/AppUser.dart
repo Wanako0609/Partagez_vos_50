@@ -2,14 +2,20 @@ import 'package:partagez_vos_50/data/models/Addresse.dart';
 
 class AppUser {
   final String uid;
-  final String? name;
-  final String? panier;
+  final String? email;
+  final String? password;
+  final String? nom;
+  final String? prenom;
   final Address? address;
+  final String? panier;
   final bool isAdmin;
 
   AppUser(
       {this.uid = "",
-      this.name,
+      this.nom,
+      this.prenom,
+      this.email,
+      this.password,
       this.panier,
       this.address,
       this.isAdmin = false});

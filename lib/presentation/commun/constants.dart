@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 const mPrimaryColor = Color.fromARGB(255, 255, 0, 0);
 const mSecondColor = Color.fromARGB(255, 129, 0, 0);
 const mErrorColor = Color.fromARGB(255, 252, 150, 150);
-const mBackgroundColor = Color.fromARGB(255, 34, 34, 34);
+const mBackgroundColor = Color(0xFF222222);
 const mAppBarBackgroundColor = Color(0xFF000000);
 
 const mTextColor = Color(0xFFFFFFFF);
@@ -30,6 +30,7 @@ const mTextPriceProduit = TextStyle(
     fontSize: 20);
 
 const mTextStepName = TextStyle(color: mTextColor);
+const mTextVerifyItem = TextStyle(color: mTextColor, fontSize: 18);
 
 class MyTheme {
   final theme1 = ThemeData(
@@ -48,6 +49,8 @@ class MyTheme {
       fontFamily: "body",
       //text field theme
       inputDecorationTheme: const InputDecorationTheme(
+        labelStyle: TextStyle(color: mTextColor),
+        floatingLabelStyle: TextStyle(color: mTextColor, fontSize: 20),
         errorStyle: TextStyle(color: mErrorColor),
         focusColor: mPrimaryColor,
         counterStyle: TextStyle(color: mTextColor),

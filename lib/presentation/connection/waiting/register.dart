@@ -79,8 +79,7 @@ class _MyRegisterColumnState extends State<MyRegisterColumn> {
   }
 
   void connexion(String email, String password) async {
-    dynamic resultconnection =
-        await _auth.registerWithEmailAndPassword(email, password);
+    dynamic resultconnection = "";
 
     if (resultconnection == "email-already-in-use") {
       setState(() {
