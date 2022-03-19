@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/data/bdd/auth/authentication.dart';
 import 'package:provider/provider.dart';
 import '../../data/models/AppUser.dart';
+import '../profil_page/main_page/screen/userProfil.dart';
 import 'constants.dart';
 import '../../main.dart';
 import 'package:partagez_vos_50/presentation/connection/login/screen/login.dart';
@@ -23,9 +24,7 @@ AppBar myAppBar(BuildContext context) {
 
   return AppBar(
     title: TextButton(
-      onPressed: () {
-        gotoHomePage(context);
-      },
+      onPressed: (() => Navigator.pushNamed(context, '/')),
       child: const Text(
         "Partagez vos 50",
         textAlign: TextAlign.center,
@@ -61,7 +60,7 @@ class IconAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        gotoLoginPage(context);
+        Navigator.pushNamed(context, '/login');
       },
       tooltip: "Mon compte",
       icon: const Icon(
@@ -90,20 +89,21 @@ class AccountMenu extends StatelessWidget {
       ),
       itemBuilder: (context) => [
         PopupMenuItem(
-          child: Row(
-            children: const [
-              Icon(Icons.account_box),
-              Text(
-                "Mon profil",
-                style: TextStyle(color: mTextColor),
-              )
-            ],
+          child: GestureDetector(
+            onTap: () => Navigator.pushNamed(context, '/userProfil'),
+            child: Row(
+              children: const [
+                Icon(Icons.account_box),
+                Text(
+                  "Mon profil",
+                  style: TextStyle(color: mTextColor),
+                )
+              ],
+            ),
           ),
         ),
         PopupMenuItem(
-          onTap: () {
-            _auth.signOutUser();
-          },
+          onTap: (() => _auth.signOutUser()),
           child: Row(
             children: const [
               Icon(Icons.logout),
@@ -117,12 +117,4 @@ class AccountMenu extends StatelessWidget {
       ],
     );
   }
-}
-
-void gotoHomePage(BuildContext context) {
-  Navigator.pushNamed(context, '/');
-}
-
-void gotoLoginPage(BuildContext context) {
-  Navigator.pushNamed(context, '/login');
 }

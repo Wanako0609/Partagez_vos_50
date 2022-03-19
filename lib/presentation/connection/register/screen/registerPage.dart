@@ -79,12 +79,21 @@ class _RegisterPageState extends State<RegisterPage> {
                     currentStep == 0
                         ? Container()
                         : Expanded(
-                            child: TextButton(
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  primary: mBackgroundColor),
                               onPressed: details.onStepCancel,
-                              child: const Text("Retour",
-                                  style: TextStyle(fontSize: 15)),
+                              child: const Text(
+                                "Retour !",
+                                style: TextStyle(
+                                    color: mSecondColor,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
+                    const SizedBox(
+                      width: 20,
+                    ),
                     currentStep == isLastStep
                         ? Expanded(
                             child: ElevatedButton(
@@ -106,13 +115,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    TextButton(
-                        onPressed: (() =>
-                            Navigator.pushNamed(context, '/login')),
-                        child: const Text(
-                          "Deja un compte ?",
-                          style: TextStyle(fontSize: 14),
-                        ))
+                    ElevatedButton(
+                      style:
+                          ElevatedButton.styleFrom(primary: mBackgroundColor),
+                      onPressed: (() => Navigator.pushNamed(context, '/login')),
+                      child: const Text(
+                        "Deja un compte ?",
+                        style: TextStyle(
+                            color: mSecondColor, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ],
                 ),
               ],

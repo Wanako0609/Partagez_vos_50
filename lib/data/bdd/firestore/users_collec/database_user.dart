@@ -46,12 +46,17 @@ class DatabaseUsers {
     Address userAddress = Address(
       rue: data["Rue"],
       codePostal: data["Code Postal"],
-      ville: data["Pays"],
+      ville: data["Ville"],
     );
-    return AppUser(uid: uid, nom: data["name"], address: userAddress);
+    return AppUser(
+        uid: uid,
+        nom: data["Nom"],
+        prenom: data["Prenom"],
+        address: userAddress,
+        isAdmin: data["isAdmin"]);
   }
 
-  Stream<AppUser> get user {
+  Stream<AppUser?> get userData {
     return userCollection.doc(uid).snapshots().map(_userFromSnapshot);
   }
 
@@ -62,7 +67,7 @@ class DatabaseUsers {
     }).toList();
   }
 
-  Stream<List<AppUser>> get users {
+  Stream<List<AppUser?>> get usersData {
     return userCollection.snapshots().map(_userListFromSnapshot);
   }
 }

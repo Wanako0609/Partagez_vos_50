@@ -9,6 +9,7 @@ class AppUser {
   final Address? address;
   final String? panier;
   final bool isAdmin;
+  final String? numero;
 
   AppUser(
       {this.uid = "",
@@ -18,5 +19,6 @@ class AppUser {
       this.password,
       this.panier,
       this.address,
-      this.isAdmin = false});
+      this.isAdmin = false,
+      this.numero});
 }

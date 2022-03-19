@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/data/models/AppUser.dart';
 import 'package:partagez_vos_50/data/bdd/auth/authentication.dart';
+import 'package:partagez_vos_50/presentation/profil_page/main_page/screen/userProfil.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -83,14 +84,22 @@ class RouteGenerator {
             return const RegisterPage();
           },
         );
+      case '/userProfil':
+        return MaterialPageRoute(
+          builder: (context) {
+            return const UserProfilPage();
+          },
+        );
 
       default:
         return MaterialPageRoute(
-            builder: (context) => Scaffold(
-                appBar: AppBar(title: const Text("Error"), centerTitle: true),
-                body: const Center(
-                  child: Text("Page not found"),
-                )));
+          builder: (context) => Scaffold(
+            appBar: AppBar(title: const Text("Error"), centerTitle: true),
+            body: const Center(
+              child: Text("Page not found"),
+            ),
+          ),
+        );
     }
   }
 }
