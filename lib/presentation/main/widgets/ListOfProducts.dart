@@ -23,14 +23,13 @@ class ListOfProduits extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(left: 5.0),
             child: Card(
-              elevation: 10,
-              color: mPriceColor,
+              elevation: 3,
               child: Column(
                 children: [
                   Container(
                     width: width,
                     height: height,
-                    color: mPriceColor,
+                    color: mCardBackgroundColor,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Image.asset(imagelink),
@@ -47,7 +46,7 @@ class ListOfProduits extends StatelessWidget {
                         style: const TextStyle(color: mTextMainPriceColor),
                       ),
                     ),
-                    color: mPriceColor,
+                    color: mCardBackgroundColor,
                   )
                 ],
               ),

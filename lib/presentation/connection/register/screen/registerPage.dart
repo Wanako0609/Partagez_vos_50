@@ -215,9 +215,10 @@ class _RegisterPageState extends State<RegisterPage> {
             break;
         }
       } else {
-        successToast(context, "Felicitation", "Utilisateur bien crée !");
-        await 5.seconds.delay;
+        await 1.seconds.delay;
         Navigator.pushNamed(context, '/');
+        successToast(context, "Felicitation", "Utilisateur bien crée !");
+        FocusScope.of(context).unfocus();
       }
     }
   }

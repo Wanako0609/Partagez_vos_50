@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/appbar.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
+import 'package:partagez_vos_50/presentation/profil_page/change_information/viewmodel/vm_change_name.dart';
 
-import '../viewmodel/vm_section_address.dart';
-import '../viewmodel/vm_section_name.dart';
-
-class UserProfilPage extends StatelessWidget {
-  const UserProfilPage({Key? key}) : super(key: key);
+class UserChangeName extends StatelessWidget {
+  const UserChangeName({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +14,15 @@ class UserProfilPage extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: SingleChildScrollView(
           child: Column(
-            children: [
-              const Text("Information General", style: mTextUserTitle),
-              const SizedBox(
-                height: 20,
+            children: const [
+              Padding(
+                padding: EdgeInsets.only(bottom: 8.0),
+                child: Text(
+                  "Modifier vos parametre",
+                  style: mTextUserTitle,
+                ),
               ),
-              UserNameSection(),
-              const Text("Adresse", style: mTextUserTitle),
-              UserAddressSectionVM()
+              ChangeNameVm(),
             ],
           ),
         ),

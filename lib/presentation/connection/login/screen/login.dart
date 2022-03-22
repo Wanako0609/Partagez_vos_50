@@ -73,7 +73,7 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
               errorPasswordMessage = "Vous devez avoir minimum 6 caracteres !";
             });
           } else {
-            connexion(email, password);
+            connexion(email.trim(), password.trim());
           }
         }
       }
@@ -94,9 +94,10 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
       });
     } else if (resultconnection is AppUser) {
       print("Connection reussit");
-      successToast(context, "Connection reussit !", "");
-      await 4.seconds.delay;
+      await 1.seconds.delay;
       Navigator.pushNamed(context, '/');
+      successToast(context, "Connection", "Connection reussit avec \n $email");
+      FocusScope.of(context).unfocus();
     } else {
       setState(() {
         result = "Ce n'est pas une adresse mail valide";
@@ -116,7 +117,7 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
           padding: const EdgeInsets.symmetric(vertical: 20.0),
           child: TextField(
               decoration: InputDecoration(
-                  hintText: "Email", errorText: errorEmailMessage),
+                  labelText: "Email", errorText: errorEmailMessage),
               controller: _emailReturn,
               keyboardType: TextInputType.emailAddress),
         ),
@@ -124,7 +125,7 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
           padding: const EdgeInsets.only(bottom: 20),
           child: TextField(
             decoration: InputDecoration(
-                hintText: "Mot de passe", errorText: errorPasswordMessage),
+                labelText: "Mot de passe", errorText: errorPasswordMessage),
             controller: _passwordReturn,
             obscureText: true,
           ),

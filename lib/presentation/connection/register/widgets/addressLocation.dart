@@ -61,7 +61,7 @@ class _AddressFormWidgetState extends State<AddressFormWidget> {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0),
           child: TextField(
-            decoration: const InputDecoration(labelText: "Adresse"),
+            decoration: const InputDecoration(labelText: "Rue"),
             controller: widget.rueReturn,
             keyboardType: TextInputType.streetAddress,
           ),

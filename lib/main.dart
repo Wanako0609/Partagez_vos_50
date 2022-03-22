@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/data/models/AppUser.dart';
 import 'package:partagez_vos_50/data/bdd/auth/authentication.dart';
-import 'package:partagez_vos_50/presentation/profil_page/main_page/screen/userProfil.dart';
+import 'package:partagez_vos_50/presentation/commun/routeGenerator.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'presentation/commun/constants.dart';
-import 'presentation/connection/login/screen/login.dart';
-import 'presentation/connection/register/screen/registerPage.dart';
 import 'presentation/main/screen/mainPage.dart';
 import 'presentation/commun/appbar.dart';
 
@@ -60,46 +58,5 @@ class MyMainPage extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class RouteGenerator {
-  static Route<dynamic> generateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case '/':
-        return MaterialPageRoute(
-          builder: (context) {
-            return const MyMainPage();
-          },
-        );
-      case '/login':
-        return MaterialPageRoute(
-          builder: (context) {
-            return const MyLoginPage();
-          },
-        );
-      case '/register':
-        return MaterialPageRoute(
-          builder: (context) {
-            return const RegisterPage();
-          },
-        );
-      case '/userProfil':
-        return MaterialPageRoute(
-          builder: (context) {
-            return const UserProfilPage();
-          },
-        );
-
-      default:
-        return MaterialPageRoute(
-          builder: (context) => Scaffold(
-            appBar: AppBar(title: const Text("Error"), centerTitle: true),
-            body: const Center(
-              child: Text("Page not found"),
-            ),
-          ),
-        );
-    }
   }
 }

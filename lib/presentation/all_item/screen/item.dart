@@ -24,13 +24,12 @@ class MyItemPage extends StatelessWidget {
             String imagelink = item.imagelink;
             return Card(
               elevation: 10,
-              color: mPriceColor,
               child: Row(
                 children: [
                   Container(
                     width: width,
                     height: height,
-                    color: mPriceColor,
+                    color: mCardBackgroundColor,
                     child: Image.asset(imagelink),
                   ),
                   SizedBox(

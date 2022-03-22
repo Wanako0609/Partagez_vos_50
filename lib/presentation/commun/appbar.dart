@@ -28,12 +28,11 @@ AppBar myAppBar(BuildContext context) {
       child: const Text(
         "Partagez vos 50",
         textAlign: TextAlign.center,
-        style:
-            TextStyle(color: mPrimaryColor, fontFamily: "logo", fontSize: 20),
+        style: TextStyle(color: Colors.black, fontFamily: "logo", fontSize: 20),
       ),
     ),
     centerTitle: true,
-    leading: const Icon(Icons.menu, color: mIconColor),
+    leading: const Icon(Icons.drag_handle, color: mIconColor),
     actions: [
       connected ? const AccountMenu() : IconAccount(colorUser: colorUser),
       Padding(
@@ -66,7 +65,7 @@ class IconAccount extends StatelessWidget {
       icon: const Icon(
         Icons.person,
       ),
-      color: Colors.white,
+      color: mIconColor,
     );
   }
 }
@@ -85,7 +84,7 @@ class AccountMenu extends StatelessWidget {
       tooltip: 'Parametre',
       child: const Icon(
         Icons.person,
-        color: mPrimaryColor,
+        color: mTercierColor,
       ),
       itemBuilder: (context) => [
         PopupMenuItem(
@@ -93,7 +92,10 @@ class AccountMenu extends StatelessWidget {
             onTap: () => Navigator.pushNamed(context, '/userProfil'),
             child: Row(
               children: const [
-                Icon(Icons.account_box),
+                Icon(
+                  Icons.account_box,
+                  color: mIconColor,
+                ),
                 Text(
                   "Mon profil",
                   style: TextStyle(color: mTextColor),
@@ -106,7 +108,10 @@ class AccountMenu extends StatelessWidget {
           onTap: (() => _auth.signOutUser()),
           child: Row(
             children: const [
-              Icon(Icons.logout),
+              Icon(
+                Icons.logout,
+                color: mIconColor,
+              ),
               Text(
                 "Deconnection",
                 style: TextStyle(color: mTextColor),

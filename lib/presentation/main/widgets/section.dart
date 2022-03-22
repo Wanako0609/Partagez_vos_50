@@ -44,7 +44,7 @@ class Section extends StatelessWidget {
                 );
               },
               icon: const Icon(
-                Icons.more_vert,
+                Icons.filter_list,
                 color: mIconColor,
               ),
             ),

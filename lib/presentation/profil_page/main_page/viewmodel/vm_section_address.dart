@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../data/bdd/firestore/users_collec/database_user.dart';
 import '../../../../data/models/AppUser.dart';
+import '../../../commun/constants.dart';
 import '../../communWidget/error.dart';
 import '../widget/widget_user_adress_section.dart';
 
@@ -25,11 +26,8 @@ class _UserAddressSectionVMState extends State<UserAddressSectionVM> {
         child: Column(
           children: [
             const UserAddressSectionWidget(),
-            ElevatedButton(
-              onPressed: () => null,
-              child: const Text("Changez mon adresse"),
-              style: ElevatedButton.styleFrom(primary: const Color(0xFF641220)),
-            )
+            mUserElevatedButton("Modifier mon adresse",
+                () => Navigator.pushNamed(context, '/userProfil/changeAddress'))
           ],
         ),
       );

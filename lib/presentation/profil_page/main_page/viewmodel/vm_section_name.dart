@@ -5,6 +5,7 @@ import 'package:partagez_vos_50/presentation/profil_page/main_page/widget/widget
 import 'package:provider/provider.dart';
 
 import '../../../../data/models/AppUser.dart';
+import '../../../commun/constants.dart';
 import '../../communWidget/error.dart';
 
 class UserNameSection extends StatefulWidget {
@@ -26,12 +27,8 @@ class _UserNameSectionState extends State<UserNameSection> {
           child: Column(
             children: [
               UserNameSectionWidget(),
-              ElevatedButton(
-                onPressed: () => null,
-                child: const Text("Changez mes informations"),
-                style:
-                    ElevatedButton.styleFrom(primary: const Color(0xFF641220)),
-              )
+              mUserElevatedButton("Modifier mes informations",
+                  () => Navigator.pushNamed(context, '/userProfil/changeName')),
             ],
           ));
     }
