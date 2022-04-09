@@ -19,6 +19,7 @@ void main() async {
           messagingSenderId: "628622489345",
           projectId: "partagez-vos-50"),
     );
+    // ignore: empty_catches
   } catch (e) {}
 
   runApp(const MyApp());

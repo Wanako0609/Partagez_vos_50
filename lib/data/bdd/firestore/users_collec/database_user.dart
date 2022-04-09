@@ -23,6 +23,14 @@ class DatabaseUsers {
     });
   }
 
+  Future<void> dataDeleteUser() {
+    return userCollection
+        .doc(uid)
+        .delete()
+        .then((value) => print("User Deleted"))
+        .catchError((error) => print("Failed to delete user: $error"));
+  }
+
   Future<void> setAdmin(bool isAdmin) async {
     return await userCollection.doc(uid).update({"isAdmin": isAdmin});
   }

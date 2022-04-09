@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 //basic
 const mPrimaryColor = Color.fromARGB(255, 255, 0, 0);
 const mSecondColor = Color.fromARGB(255, 129, 0, 0);
-const mTercierColor = Color(0xFFf38f6d);
+const mTercierColor = Color.fromARGB(255, 83, 24, 46);
 const mErrorColor = Color.fromARGB(255, 158, 78, 58);
 const mBackgroundColor = Color.fromARGB(255, 201, 201, 201);
 const mAppBarBackgroundColor = Color.fromARGB(255, 189, 24, 24);
@@ -12,7 +12,7 @@ const mTextColor = Color.fromARGB(255, 0, 0, 0);
 const mIconColor = Color.fromARGB(255, 0, 0, 0);
 
 const mTextFieldBackgroundColor = Color.fromARGB(255, 185, 185, 185);
-const mCardBackgroundColor = Color.fromARGB(255, 124, 124, 124);
+const mCardBackgroundColor = Color.fromARGB(255, 114, 114, 114);
 
 //item colors
 const mPriceColor = Color.fromARGB(255, 56, 56, 56);
@@ -35,6 +35,7 @@ const mTextStepName = TextStyle(color: mTextColor);
 const mTextVerifyItem = TextStyle(color: mTextColor, fontSize: 18);
 
 //user profils
+const mCardUserBackgroundColor = Color.fromARGB(150, 114, 114, 114);
 const mTextUserTitle = TextStyle(
   fontFamily: "logo",
   fontSize: 30,
@@ -42,7 +43,7 @@ const mTextUserTitle = TextStyle(
 );
 const mTextUserInformation =
     TextStyle(fontSize: 20, color: mTercierColor, fontWeight: FontWeight.bold);
-const mTextUserInformationUser = TextStyle(fontSize: 20, color: Colors.white);
+const mTextUserInformationUser = TextStyle(fontSize: 20, color: Colors.black);
 
 //design btn user profil
 ElevatedButton mUserElevatedButton(String name, void Function() func) {

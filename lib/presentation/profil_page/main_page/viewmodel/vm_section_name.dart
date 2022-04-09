@@ -22,15 +22,16 @@ class _UserNameSectionState extends State<UserNameSection> {
       return const UserError();
     } else {
       return StreamProvider<AppUser?>.value(
-          value: DatabaseUsers(uid: user.uid).userData,
-          initialData: null,
-          child: Column(
-            children: [
-              UserNameSectionWidget(),
-              mUserElevatedButton("Modifier mes informations",
-                  () => Navigator.pushNamed(context, '/userProfil/changeName')),
-            ],
-          ));
+        value: DatabaseUsers(uid: user.uid).userData,
+        initialData: null,
+        child: Column(
+          children: [
+            UserNameSectionWidget(),
+            mUserElevatedButton("Modifier mes informations",
+                () => Navigator.pushNamed(context, '/userProfil/changeName')),
+          ],
+        ),
+      );
     }
   }
 }

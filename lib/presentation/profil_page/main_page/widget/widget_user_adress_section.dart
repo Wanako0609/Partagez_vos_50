@@ -25,6 +25,7 @@ class _UserAddressSectionWidgetState extends State<UserAddressSectionWidget> {
         padding: const EdgeInsets.all(8.0),
         child: Card(
           elevation: 10,
+          color: mCardUserBackgroundColor,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

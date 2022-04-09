@@ -25,6 +25,7 @@ class AuthenticationService {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       User? user = userCredential.user;
+
       return _userFromFirebaseUser(user!);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -36,6 +37,31 @@ class AuthenticationService {
       } else {
         print(e.toString());
         return 'Error';
+      }
+    }
+  }
+
+  Future changePassword(AppUser user, String password) async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+
+      if (user != null && user.emailVerified) {
+        await user.sendEmailVerification();
+      }
+      user?.updatePassword(password);
+    } catch (e) {
+      print("Password can't be changed " + e.toString());
+    }
+  }
+
+  Future<void> deleteUser(AppUser user) async {
+    try {
+      await DatabaseUsers(uid: user.uid).dataDeleteUser();
+      await _auth.currentUser!.delete();
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'requires-recent-login') {
+        print(
+            'The user must reauthenticate before this operation can be executed.');
       }
     }
   }
@@ -75,6 +101,23 @@ class AuthenticationService {
       print("erreur deconnection");
       print(e.toString());
       return null;
+    }
+  }
+
+  void changePasswordMethode(
+      String currentPassword, String newPassword, String email) async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final cred =
+          EmailAuthProvider.credential(email: email, password: currentPassword);
+
+      user.reauthenticateWithCredential(cred).then((value) {
+        user.updatePassword(newPassword).then((_) {
+          //Success, do something
+        }).catchError((error) {
+          //Error, show something
+        });
+      }).catchError((err) {});
     }
   }
 }

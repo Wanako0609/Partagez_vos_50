@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/data/bdd/firestore/users_collec/database_user.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -22,6 +21,7 @@ class _UserNameSectionWidgetState extends State<UserNameSectionWidget> {
         padding: const EdgeInsets.all(8.0),
         child: Card(
           elevation: 10,
+          color: mCardUserBackgroundColor,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

@@ -6,11 +6,15 @@ class UserError extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        const Text("Oups une erreur s'est produite veillez vous reconnecter"),
-        ElevatedButton(
-            onPressed: () => Navigator.pushNamed(context, "/login"),
-            child: const Text("Login"))
+      children: const [
+        Center(
+            child: Text(
+                "Oups une erreur s'est produite veillez vous reconnecter")),
+        Icon(
+          Icons.error,
+          size: 50,
+          color: Colors.redAccent,
+        )
       ],
     );
   }

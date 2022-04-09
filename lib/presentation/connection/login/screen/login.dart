@@ -96,7 +96,7 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
       print("Connection reussit");
       await 1.seconds.delay;
       Navigator.pushNamed(context, '/');
-      successToast(context, "Connection", "Connection reussit avec \n $email");
+      successToast(context, "", "Connecté avec \n $email");
       FocusScope.of(context).unfocus();
     } else {
       setState(() {

@@ -32,7 +32,7 @@ AppBar myAppBar(BuildContext context) {
       ),
     ),
     centerTitle: true,
-    leading: const Icon(Icons.drag_handle, color: mIconColor),
+    leading: const Icon(Icons.clear_all, color: mIconColor),
     actions: [
       connected ? const AccountMenu() : IconAccount(colorUser: colorUser),
       Padding(
@@ -45,6 +45,63 @@ AppBar myAppBar(BuildContext context) {
       ),
     ],
   );
+}
+
+AppBar myAppBarRetour(BuildContext context) {
+  Color colorUser = const Color.fromARGB(255, 255, 73, 73);
+
+  bool canRetour = false;
+  if (Navigator.canPop(context)) {
+    canRetour == true;
+  }
+
+  final user = Provider.of<AppUser?>(context);
+
+  bool connected;
+
+  if (user == null) {
+    connected = false;
+  } else {
+    connected = true;
+  }
+
+  return AppBar(
+    title: TextButton(
+      onPressed: (() => Navigator.pushNamed(context, '/')),
+      child: const Text(
+        "Partagez vos 50",
+        textAlign: TextAlign.center,
+        style: TextStyle(color: Colors.black, fontFamily: "logo", fontSize: 20),
+      ),
+    ),
+    centerTitle: true,
+    leading: const GoBackButton(),
+    actions: [
+      connected ? const AccountMenu() : IconAccount(colorUser: colorUser),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: IconButton(
+          onPressed: () {},
+          tooltip: "My Bag",
+          icon: const Icon(Icons.shopping_bag, color: mIconColor),
+        ),
+      ),
+    ],
+  );
+}
+
+class GoBackButton extends StatelessWidget {
+  const GoBackButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+        onPressed: (() => Navigator.maybePop(context)),
+        icon: const Icon(
+          Icons.arrow_back_ios,
+          color: mIconColor,
+        ));
+  }
 }
 
 class IconAccount extends StatelessWidget {
@@ -84,7 +141,7 @@ class AccountMenu extends StatelessWidget {
       tooltip: 'Parametre',
       child: const Icon(
         Icons.person,
-        color: mTercierColor,
+        color: Colors.white,
       ),
       itemBuilder: (context) => [
         PopupMenuItem(
