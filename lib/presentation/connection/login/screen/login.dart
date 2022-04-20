@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
 import 'package:partagez_vos_50/data/models/AppUser.dart';
+import 'package:partagez_vos_50/presentation/commun/sign_in_button.dart';
+import 'package:partagez_vos_50/presentation/connection/login/widgets/text_field.dart';
 import 'package:time/time.dart';
 import '../../../../data/bdd/auth/authentication.dart';
 import 'package:partagez_vos_50/presentation/commun/appbar.dart';
@@ -36,8 +38,8 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
   final AuthenticationService _auth = AuthenticationService();
 
   //variable
-  final _emailReturn = TextEditingController();
-  final _passwordReturn = TextEditingController();
+  final emailReturn = TextEditingController();
+  final passwordReturn = TextEditingController();
 
   String email = "";
   String password = "";
@@ -96,7 +98,7 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
       print("Connection reussit");
       await 1.seconds.delay;
       Navigator.pushNamed(context, '/');
-      successToast(context, "", "Connecté avec \n $email");
+      successToast(context, "Connexion reussit", "Connecté avec \n $email");
       FocusScope.of(context).unfocus();
     } else {
       setState(() {
@@ -113,26 +115,14 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
           'Connexion',
           style: TextStyle(fontSize: 40, color: mSecondColor),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20.0),
-          child: TextField(
-              decoration: InputDecoration(
-                  labelText: "Email", errorText: errorEmailMessage),
-              controller: _emailReturn,
-              keyboardType: TextInputType.emailAddress),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 20),
-          child: TextField(
-            decoration: InputDecoration(
-                labelText: "Mot de passe", errorText: errorPasswordMessage),
-            controller: _passwordReturn,
-            obscureText: true,
-          ),
-        ),
+        TextFieldSection(
+            errorEmailMessage: errorEmailMessage,
+            errorPasswordMessage: errorPasswordMessage,
+            emailReturn: emailReturn,
+            passwordReturn: passwordReturn),
         ElevatedButton(
           onPressed: (() {
-            voidfield(_emailReturn.text, _passwordReturn.text);
+            voidfield(emailReturn.text, passwordReturn.text);
           }),
           child: const Text("Connexion", style: TextStyle(fontSize: 15)),
         ),
@@ -140,16 +130,23 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
           result,
           style: const TextStyle(color: Colors.red),
         ),
-        const Divider(
-          thickness: 2,
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/register');
-          },
-          child:
-              const Text('Se crée un compte !', style: TextStyle(fontSize: 15)),
-        ),
+        myGoogleSignInButton(context),
+        const SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            ElevatedButton(
+              style:
+                  ElevatedButton.styleFrom(primary: mTextFieldBackgroundColor),
+              onPressed: (() => Navigator.pushNamed(context, '/register')),
+              child: const Text(
+                "Se cree un compte !",
+                style:
+                    TextStyle(color: mSecondColor, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        )
       ],
     );
   }

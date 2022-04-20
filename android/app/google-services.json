@@ -29,6 +29,13 @@
             {
               "client_id": "628622489345-bln7shhen83cav8ca7s67d28non7em5j.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "628622489345-llngi9hrg58bplaic7rc5t0isv7jdroa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "fr.partagezVos50.application"
+              }
             }
           ]
         }

@@ -58,7 +58,6 @@ class _RegisterPageState extends State<RegisterPage> {
             } else {
               // currentStep == 2
               sendInformation();
-              print("task finish");
             }
           },
 
@@ -177,6 +176,7 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
       ];
+
   void testpassword() {
     if (passwordReturn.text.length < 6) {
       warningToast(
@@ -184,17 +184,34 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  Future<void> sendInformation() async {
-    if (emailReturn.text == "" ||
-        rueReturn.text == "" ||
-        villeReturn.text == "" ||
-        postalCodeReturn.text == "" ||
-        nomReturn.text == "" ||
-        prenomReturn.text == "") {
+  bool validInformation() {
+    if (emailReturn.text.trim().isEmpty ||
+        rueReturn.text.trim().isEmpty ||
+        villeReturn.text.trim().isEmpty ||
+        postalCodeReturn.text.trim().isEmpty ||
+        nomReturn.text.trim().isEmpty ||
+        prenomReturn.text.trim().isEmpty) {
       errorToast(context, "Il faut remplir tout les champs");
-    } else if (passwordReturn.text == "" || passwordReturn.text.length < 6) {
+      return false;
+    } else if (passwordReturn.text.trim().isEmpty ||
+        passwordReturn.text.length < 6) {
       errorToast(
           context, "Le mot de passe doit contenir minimun 6 caracteres !");
+      return false;
+    } else if (nomReturn.text.length < 3) {
+      errorToast(context, "Le nom doit contenir minimun 3 caracteres !");
+      return false;
+    } else if (prenomReturn.text.length < 3) {
+      errorToast(context, "Le prenom doit contenir minimun 3 caracteres !");
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  Future<void> sendInformation() async {
+    if (validInformation() == false) {
+      return;
     } else {
       Address address = Address(
         rue: rueReturn.text,

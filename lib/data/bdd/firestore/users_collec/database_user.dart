@@ -10,6 +10,24 @@ class DatabaseUsers {
 
   final userCollection = FirebaseFirestore.instance.collection('users');
 
+  Future<void> hadCollection() async {
+    return await userCollection.doc(uid).get().then((value) => {
+          if (value.exists == false) {createEmptyCollection()}
+        });
+  }
+
+  Future<void> createEmptyCollection() async {
+    return await userCollection.doc(uid).set({
+      "Nom": "Non renseigner",
+      "Prenom": "Non renseigner",
+      "Rue": "Non renseigner",
+      "Code Postal": "Non renseigner",
+      "Ville": "Non renseigner",
+      "Pays": "France",
+      "isAdmin": false
+    });
+  }
+
   Future<void> createUser(AppUser appUser) async {
     Address? address = appUser.address;
     return await userCollection.doc(uid).set({

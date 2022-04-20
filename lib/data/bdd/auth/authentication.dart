@@ -1,6 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/data/bdd/firestore/users_collec/database_user.dart';
 import 'package:partagez_vos_50/data/models/AppUser.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:time/time.dart';
+
+import '../../../presentation/commun/customToast.dart';
 
 class AuthenticationService {
   //instancie firebase
@@ -41,6 +46,7 @@ class AuthenticationService {
     }
   }
 
+  //not used
   Future changePassword(AppUser user, String password) async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
@@ -104,20 +110,49 @@ class AuthenticationService {
     }
   }
 
-  void changePasswordMethode(
-      String currentPassword, String newPassword, String email) async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      final cred =
-          EmailAuthProvider.credential(email: email, password: currentPassword);
+  Future signInWithGoogle(BuildContext context) async {
+    // Appel un flux pour deconnecter
+    final GoogleSignInAccount? googleUser = await GoogleSignIn(
+      scopes: [
+        'email',
+        'https://www.googleapis.com/auth/contacts.readonly',
+      ],
+    ).signIn().catchError((onError) => print(onError));
 
-      user.reauthenticateWithCredential(cred).then((value) {
-        user.updatePassword(newPassword).then((_) {
-          //Success, do something
-        }).catchError((error) {
-          //Error, show something
-        });
-      }).catchError((err) {});
+    if (googleUser == null) {
+      return null;
     }
+
+    // Obtien les information de la requete
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser.authentication;
+
+    // cree un credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    //converti le credential en user firebase
+    User? user = (await _auth.signInWithCredential(credential)).user;
+
+    //test si l'utilisateur est null ou pas
+    if (user == null) {
+      return null;
+    }
+
+    // Message de connection
+    print("Connection reussit");
+    await 1.seconds.delay;
+    Navigator.pushNamed(context, '/');
+    successToast(
+        context, "Connexion reussit", "Connecté avec \n ${user.email}");
+    FocusScope.of(context).unfocus();
+
+    // cree la base de donne si n'existe pas
+    await DatabaseUsers(uid: user.uid).hadCollection();
+
+    // Une fois connecter return le AppUser
+    return _userFromFirebaseUser(user);
   }
 }

@@ -51,7 +51,7 @@ class _UserAddressSectionWidgetState extends State<UserAddressSectionWidget> {
           Text("$lineText : ", style: mTextUserInformation),
           //test si la valeur existe en DB
           user == null
-              ? const Text("null", style: mTextUserInformationUser)
+              ? const Text("Non renseigner", style: mTextUserInformationUser)
               : Text(text, style: mTextUserInformationUser),
         ],
       ),
