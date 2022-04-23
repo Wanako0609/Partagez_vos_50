@@ -36,14 +36,23 @@ class _InformationVetVMState extends State<InformationVetVM> {
             whenEmpty: "Categorie",
             listReturn: widget.categoriesChoisis),
         const SizedBox(height: 15),
-        AddVetDescription(
-            label: "Description", controller: widget.descriptionController),
+        TextField(
+          minLines: 2,
+          maxLines: 8,
+          controller: widget.descriptionController,
+          keyboardType: TextInputType.multiline,
+          decoration: const InputDecoration(labelText: "Description"),
+        ),
         const SizedBox(height: 15),
         Row(
           children: [
             Expanded(
-              child: AddVetDescription(
-                  label: "Prix", controller: widget.priceController),
+              child: TextField(
+                decoration: const InputDecoration(
+                    labelText: "Prix", suffixIcon: Icon(Icons.euro_sharp)),
+                controller: widget.priceController,
+                keyboardType: TextInputType.number,
+              ),
             ),
             const SizedBox(width: 15),
             Expanded(

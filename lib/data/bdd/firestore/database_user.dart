@@ -10,13 +10,22 @@ class DatabaseUsers {
 
   final userCollection = FirebaseFirestore.instance.collection('users');
 
-  Future<void> hadCollection() async {
+  Stream<List<AppUser?>> get usersData {
+    return userCollection.snapshots().map(_userListFromSnapshot);
+  }
+
+  Stream<AppUser?> get userData {
+    return userCollection.doc(uid).snapshots().map(_userFromSnapshot);
+  }
+
+  //creation doc
+  Future<void> hadCollection(String? email) async {
     return await userCollection.doc(uid).get().then((value) => {
-          if (value.exists == false) {createEmptyCollection()}
+          if (value.exists == false) {createEmptyCollection(email)}
         });
   }
 
-  Future<void> createEmptyCollection() async {
+  Future<void> createEmptyCollection(String? email) async {
     return await userCollection.doc(uid).set({
       "Nom": "Non renseigner",
       "Prenom": "Non renseigner",
@@ -24,7 +33,8 @@ class DatabaseUsers {
       "Code Postal": "Non renseigner",
       "Ville": "Non renseigner",
       "Pays": "France",
-      "isAdmin": false
+      "isAdmin": false,
+      "email": email
     });
   }
 
@@ -37,10 +47,12 @@ class DatabaseUsers {
       "Code Postal": address.codePostal,
       "Ville": address.ville,
       "Pays": address.pays,
-      "isAdmin": false
+      "isAdmin": false,
+      "email": appUser.email
     });
   }
 
+  //supression
   Future<void> dataDeleteUser() {
     return userCollection
         .doc(uid)
@@ -49,6 +61,7 @@ class DatabaseUsers {
         .catchError((error) => print("Failed to delete user: $error"));
   }
 
+  //modification
   Future<void> setAdmin(bool isAdmin) async {
     return await userCollection.doc(uid).update({"isAdmin": isAdmin});
   }
@@ -66,6 +79,7 @@ class DatabaseUsers {
     });
   }
 
+  //convertion
   AppUser _userFromSnapshot(DocumentSnapshot<Map<String, dynamic>> snapshot) {
     var data = snapshot.data();
     if (data == null) throw Exception("user not found");
@@ -77,13 +91,10 @@ class DatabaseUsers {
     return AppUser(
         uid: uid,
         nom: data["Nom"],
+        email: data["email"],
         prenom: data["Prenom"],
         address: userAddress,
         isAdmin: data["isAdmin"]);
-  }
-
-  Stream<AppUser?> get userData {
-    return userCollection.doc(uid).snapshots().map(_userFromSnapshot);
   }
 
   List<AppUser> _userListFromSnapshot(
@@ -93,7 +104,17 @@ class DatabaseUsers {
     }).toList();
   }
 
-  Stream<List<AppUser?>> get usersData {
-    return userCollection.snapshots().map(_userListFromSnapshot);
+  //recuperation de donner
+  Future<int> countDocuments() async {
+    QuerySnapshot myDoc = await userCollection.get();
+    List<DocumentSnapshot> myDocCount = myDoc.docs;
+    return myDocCount.length;
+  }
+
+  Future<int> countAdminDocuments() async {
+    QuerySnapshot myDoc =
+        await userCollection.where("isAdmin", isEqualTo: true).get();
+    List<DocumentSnapshot> myDocCount = myDoc.docs;
+    return myDocCount.length;
   }
 }

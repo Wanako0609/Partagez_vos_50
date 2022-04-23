@@ -44,7 +44,7 @@ class AddVetPage extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      print(categoriesChoisis);
+                      print(uuid);
                     },
                     child: const Text(
                       "Ajoute !",

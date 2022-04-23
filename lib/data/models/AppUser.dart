@@ -15,7 +15,7 @@ class AppUser {
       {this.uid = "",
       this.nom,
       this.prenom,
-      this.email,
+      required this.email,
       this.password,
       this.panier,
       this.address,

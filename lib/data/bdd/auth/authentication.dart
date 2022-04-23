@@ -13,7 +13,7 @@ class AuthenticationService {
 
   AppUser? _userFromFirebaseUser(User? user) {
     if (user != null) {
-      return AppUser(uid: user.uid);
+      return AppUser(uid: user.uid, email: user.email);
     } else {
       return null;
     }
@@ -150,7 +150,7 @@ class AuthenticationService {
     FocusScope.of(context).unfocus();
 
     // cree la base de donne si n'existe pas
-    await DatabaseUsers(uid: user.uid).hadCollection();
+    await DatabaseUsers(uid: user.uid).hadCollection(user.email);
 
     // Une fois connecter return le AppUser
     return _userFromFirebaseUser(user);

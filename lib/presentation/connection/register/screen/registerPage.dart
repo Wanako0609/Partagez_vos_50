@@ -219,7 +219,11 @@ class _RegisterPageState extends State<RegisterPage> {
         ville: villeReturn.text,
       );
       AppUser appUser = AppUser(
-          nom: nomReturn.text, prenom: prenomReturn.text, address: address);
+        nom: nomReturn.text,
+        prenom: prenomReturn.text,
+        address: address,
+        email: emailReturn.text,
+      );
       dynamic result = await _auth.registerWithEmailAndPassword(
           appUser, emailReturn.text, passwordReturn.text);
       if (result is String) {

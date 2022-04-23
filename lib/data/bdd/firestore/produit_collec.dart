@@ -15,7 +15,8 @@ class DatabaseProduit {
       "description": produit.description,
       "prix": produit.prix,
       "categorie": produit.categorie,
-      "taille": produit.tailles
+      "taille": produit.tailles,
+      "in_stock": true
     });
   }
 }

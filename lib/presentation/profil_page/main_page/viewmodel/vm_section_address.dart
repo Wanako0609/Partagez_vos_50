@@ -24,10 +24,8 @@ class _UserAddressSectionVMState extends State<UserAddressSectionVM> {
         value: DatabaseUsers(uid: user.uid).userData,
         initialData: null,
         child: Column(
-          children: [
-            const UserAddressSectionWidget(),
-            mUserElevatedButton("Modifier mon adresse",
-                () => Navigator.pushNamed(context, '/userProfil/changeAddress'))
+          children: const [
+            UserAddressSectionWidget(),
           ],
         ),
       );

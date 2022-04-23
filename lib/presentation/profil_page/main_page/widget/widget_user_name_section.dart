@@ -17,25 +17,31 @@ class _UserNameSectionWidgetState extends State<UserNameSectionWidget> {
     if (user == null) {
       return const UserError();
     } else {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Card(
-          elevation: 10,
-          color: mCardUserBackgroundColor,
-          child: Padding(
+      return Column(
+        children: [
+          Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                //line suivante
-                InformationLine(user, user.nom.toString(), "Ton nom"),
-                //line suivante
-                InformationLine(user, user.prenom.toString(), "Ton prenom"),
-                //line suivante
-                InformationLine(user, user.numero.toString(), "Ton numero")
-              ],
+            child: Card(
+              elevation: 10,
+              color: mCardUserBackgroundColor,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    //line suivante
+                    InformationLine(user, user.nom.toString(), "Ton nom"),
+                    //line suivante
+                    InformationLine(user, user.prenom.toString(), "Ton prenom"),
+                    //line suivante
+                    InformationLine(user, user.numero.toString(), "Ton numero")
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
+          mUserElevatedButton("Modifier mes informations",
+              () => Navigator.pushNamed(context, '/userProfil/changeName')),
+        ],
       );
     }
   }

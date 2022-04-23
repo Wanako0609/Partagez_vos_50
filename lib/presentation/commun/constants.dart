@@ -45,6 +45,15 @@ const mTextUserInformation =
     TextStyle(fontSize: 20, color: mTercierColor, fontWeight: FontWeight.bold);
 const mTextUserInformationUser = TextStyle(fontSize: 20, color: Colors.black);
 
+//tab color
+const mTextTab =
+    TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold);
+const mTextTabUnselected =
+    TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold);
+
+const mNumberStats =
+    TextStyle(fontSize: 20, color: mPrimaryColor, fontWeight: FontWeight.bold);
+
 //design btn user profil
 ElevatedButton mUserElevatedButton(String name, void Function() func) {
   return ElevatedButton(

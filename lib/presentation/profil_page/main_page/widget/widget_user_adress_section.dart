@@ -21,24 +21,31 @@ class _UserAddressSectionWidgetState extends State<UserAddressSectionWidget> {
     if (user == null) {
       return const UserError();
     } else {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Card(
-          elevation: 10,
-          color: mCardUserBackgroundColor,
-          child: Padding(
+      return Column(
+        children: [
+          Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                InformationLine(user, user.address!.rue.toString(), "Ta rue"),
-                InformationLine(
-                    user, user.address!.ville.toString(), "Ta ville"),
-                InformationLine(user, user.address!.codePostal.toString(),
-                    "Ton code postal"),
-              ],
+            child: Card(
+              elevation: 10,
+              color: mCardUserBackgroundColor,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    InformationLine(
+                        user, user.address!.rue.toString(), "Ta rue"),
+                    InformationLine(
+                        user, user.address!.ville.toString(), "Ta ville"),
+                    InformationLine(user, user.address!.codePostal.toString(),
+                        "Ton code postal"),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
+          mUserElevatedButton("Modifier mon adresse",
+              () => Navigator.pushNamed(context, '/userProfil/changeAddress'))
+        ],
       );
     }
   }
