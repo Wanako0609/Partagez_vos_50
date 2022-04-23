@@ -1,20 +1,33 @@
 class Produit {
-  final String name;
-  final String? type;
-  final int? numberSize;
-  final String? letterSize;
-  final String description;
-  final String imagelink;
-  final int price;
-  final int numberProduct;
+  final String titre; //obligatoire
+  final String? type; //obligatoire a changer en type unique
+  final String letterSize; //obligatoire taille dispo
+  final String description; //obligatoire
+  final String imagelink; //obligatoire
+  final int price; //obligatoire
+  final int? numberProduct;
 
   Produit(
-      {required this.name,
+      {required this.titre,
       required this.description,
-      this.imagelink = "",
-      this.letterSize,
-      this.numberSize,
+      required this.letterSize,
       required this.price,
+      this.imagelink = "",
       this.type,
-      required this.numberProduct});
+      this.numberProduct});
+}
+
+class InfoProduit {
+  final String titre;
+  final String description;
+  final int prix;
+  final List<String> categorie;
+  final List<String> tailles;
+
+  InfoProduit(
+      {required this.titre,
+      required this.description,
+      required this.prix,
+      required this.categorie,
+      required this.tailles});
 }

@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/main/screen/mainPage.dart';
 
 import '../../../data/models/Produit.dart';
+import '../all_item/screen/item.dart';
 import 'ListOfProducts.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
-
-import 'package:partagez_vos_50/presentation/all_item/screen/item.dart';
 
 //une partie de la page principal
 class Section extends StatelessWidget {

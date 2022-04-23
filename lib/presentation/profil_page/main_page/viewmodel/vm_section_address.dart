@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../data/bdd/firestore/users_collec/database_user.dart';
+import '../../../../data/bdd/firestore/database_user.dart';
 import '../../../../data/models/AppUser.dart';
 import '../../../commun/constants.dart';
 import '../../communWidget/error.dart';

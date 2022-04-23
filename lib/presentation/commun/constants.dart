@@ -5,14 +5,14 @@ const mPrimaryColor = Color.fromARGB(255, 255, 0, 0);
 const mSecondColor = Color.fromARGB(255, 129, 0, 0);
 const mTercierColor = Color.fromARGB(255, 83, 24, 46);
 const mErrorColor = Color.fromARGB(255, 158, 78, 58);
-const mBackgroundColor = Color.fromARGB(255, 201, 201, 201);
+const mBackgroundColor = Color.fromARGB(255, 209, 209, 209);
 const mAppBarBackgroundColor = Color.fromARGB(255, 189, 24, 24);
 
 const mTextColor = Color.fromARGB(255, 0, 0, 0);
 const mIconColor = Color.fromARGB(255, 0, 0, 0);
 
 const mTextFieldBackgroundColor = Color.fromARGB(255, 185, 185, 185);
-const mCardBackgroundColor = Color.fromARGB(255, 114, 114, 114);
+const mCardBackgroundColor = Color.fromARGB(255, 143, 142, 142);
 
 //item colors
 const mPriceColor = Color.fromARGB(255, 56, 56, 56);
@@ -86,7 +86,7 @@ class MyTheme {
       counterStyle: TextStyle(color: mTextColor),
       hintStyle: TextStyle(color: mTextColor),
       fillColor: mTextFieldBackgroundColor,
-      filled: true,
+      filled: false,
       errorBorder: OutlineInputBorder(
         borderSide: BorderSide(color: mErrorColor, width: 2),
         borderRadius: BorderRadius.all(

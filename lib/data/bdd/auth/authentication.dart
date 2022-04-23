@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/data/bdd/firestore/users_collec/database_user.dart';
+import 'package:partagez_vos_50/data/bdd/firestore/database_user.dart';
 import 'package:partagez_vos_50/data/models/AppUser.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:time/time.dart';

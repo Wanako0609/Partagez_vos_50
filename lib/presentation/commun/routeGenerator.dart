@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/presentation/add_vet/screen/add_vet.dart';
 import 'package:partagez_vos_50/presentation/panel_admin/main_panel/screen/panel_admin.dart';
 import 'package:partagez_vos_50/presentation/profil_page/change_information/screen/change_address.dart';
 import 'package:partagez_vos_50/presentation/profil_page/change_information/screen/change_name.dart';
 
 import '../../main.dart';
+import '../add_produit/screen/add_vet.dart';
 import '../connection/login/screen/login.dart';
 import '../connection/register/screen/registerPage.dart';
 import '../profil_page/main_page/screen/userProfil.dart';

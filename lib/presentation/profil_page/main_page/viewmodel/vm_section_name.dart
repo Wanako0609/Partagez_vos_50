@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:partagez_vos_50/data/bdd/firestore/users_collec/database_user.dart';
+import 'package:partagez_vos_50/data/bdd/firestore/database_user.dart';
 import 'package:partagez_vos_50/presentation/profil_page/main_page/widget/widget_user_name_section.dart';
 import 'package:provider/provider.dart';
 

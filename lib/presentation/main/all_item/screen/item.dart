@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
 import 'package:partagez_vos_50/presentation/commun/appbar.dart';
 
-import '../../../data/models/Produit.dart';
+import '../../../../data/models/Produit.dart';
 
 class MyItemPage extends StatelessWidget {
   MyItemPage({this.height = 150, this.width = 150, required this.produits});
@@ -41,7 +41,7 @@ class MyItemPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            produits[index].name,
+                            produits[index].titre,
                             style: mTextTitleProduit,
                           ),
                           const SizedBox(height: 8),

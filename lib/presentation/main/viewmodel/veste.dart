@@ -2,21 +2,24 @@ import '../../../data/models/Produit.dart';
 
 final List<Produit> vesteProduits = <Produit>[
   Produit(
-      name: "veste",
+      titre: "veste",
       description: "veste blanc",
       imagelink: "assets/image_veste/image1.jpg",
       numberProduct: 5,
-      price: 20),
+      price: 20,
+      letterSize: ''),
   Produit(
-      name: "veste bleu",
+      titre: "veste bleu",
       description: "veste rouge",
       imagelink: "assets/image_veste/image2.jpg",
       numberProduct: 5,
-      price: 15),
+      price: 15,
+      letterSize: ''),
   Produit(
-      name: "veste verte",
+      titre: "veste verte",
       description: "veste verte",
       imagelink: "assets/image_veste/image3.png",
       numberProduct: 5,
-      price: 15),
+      price: 15,
+      letterSize: ''),
 ];
