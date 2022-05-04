@@ -96,9 +96,9 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
       });
     } else if (resultconnection is AppUser) {
       print("Connection reussit");
-      await 1.seconds.delay;
+      await 400.milliseconds.delay;
       Navigator.pushNamed(context, '/');
-      successToast(context, "Connexion reussit", "Connecté avec \n $email");
+      successToast(context, "Connexion", "Connecté avec \n $email");
       FocusScope.of(context).unfocus();
     } else {
       setState(() {

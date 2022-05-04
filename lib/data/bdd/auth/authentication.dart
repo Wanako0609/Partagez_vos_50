@@ -98,18 +98,6 @@ class AuthenticationService {
     }
   }
 
-  //methode appele pour deconnecter
-  Future signOutUser() async {
-    try {
-      print("Deconnection reussit");
-      return await _auth.signOut();
-    } catch (e) {
-      print("erreur deconnection");
-      print(e.toString());
-      return null;
-    }
-  }
-
   Future signInWithGoogle(BuildContext context) async {
     // Appel un flux pour deconnecter
     final GoogleSignInAccount? googleUser = await GoogleSignIn(
@@ -143,10 +131,9 @@ class AuthenticationService {
 
     // Message de connection
     print("Connection reussit");
-    await 1.seconds.delay;
+    await 400.milliseconds.delay;
     Navigator.pushNamed(context, '/');
-    successToast(
-        context, "Connexion reussit", "Connecté avec \n ${user.email}");
+    successToast(context, "Connexion", "Connecté avec \n ${user.email}");
     FocusScope.of(context).unfocus();
 
     // cree la base de donne si n'existe pas
@@ -154,5 +141,17 @@ class AuthenticationService {
 
     // Une fois connecter return le AppUser
     return _userFromFirebaseUser(user);
+  }
+
+  //methode appele pour deconnecter
+  Future signOutUser() async {
+    try {
+      print("Deconnection reussit");
+      return await _auth.signOut();
+    } catch (e) {
+      print("erreur deconnection");
+      print(e.toString());
+      return null;
+    }
   }
 }

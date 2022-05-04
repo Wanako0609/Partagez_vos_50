@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../viewmodels/vm_users/users_list.dart';
 import '../viewmodels/vm_users/vm_users.dart';
 
 class UsersAdmin extends StatelessWidget {
@@ -7,6 +8,9 @@ class UsersAdmin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ExpenseList();
+    return const Padding(
+      padding: EdgeInsets.all(8.0),
+      child: ExpenseListUser(),
+    );
   }
 }

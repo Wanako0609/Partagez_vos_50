@@ -143,26 +143,36 @@ class AccountMenu extends StatelessWidget {
         Icons.person,
         color: Colors.white,
       ),
+      onSelected: (value) {
+        switch (value) {
+          case 0:
+            Navigator.pushNamed(context, '/userProfil');
+            break;
+          case 1:
+            _auth.signOutUser();
+            break;
+          default:
+            break;
+        }
+      },
       itemBuilder: (context) => [
         PopupMenuItem(
-          child: GestureDetector(
-            onTap: () => Navigator.pushNamed(context, '/userProfil'),
-            child: Row(
-              children: const [
-                Icon(
-                  Icons.account_box,
-                  color: mIconColor,
-                ),
-                Text(
-                  "Mon profil",
-                  style: TextStyle(color: mTextColor),
-                )
-              ],
-            ),
+          value: 0,
+          child: Row(
+            children: const [
+              Icon(
+                Icons.account_box,
+                color: mIconColor,
+              ),
+              Text(
+                "Mon profil",
+                style: TextStyle(color: mTextColor),
+              )
+            ],
           ),
         ),
         PopupMenuItem(
-          onTap: (() => _auth.signOutUser()),
+          value: 1,
           child: Row(
             children: const [
               Icon(
