@@ -34,7 +34,8 @@ class DatabaseUsers {
       "Ville": "Non renseigner",
       "Pays": "France",
       "isAdmin": false,
-      "email": email
+      "email": email,
+      "uid": uid
     });
   }
 
@@ -48,7 +49,8 @@ class DatabaseUsers {
       "Ville": address.ville,
       "Pays": address.pays,
       "isAdmin": false,
-      "email": appUser.email
+      "email": appUser.email,
+      "uid": uid,
     });
   }
 
@@ -89,7 +91,7 @@ class DatabaseUsers {
       ville: data["Ville"],
     );
     return AppUser(
-        uid: uid,
+        uid: data["uid"],
         nom: data["Nom"],
         email: data["email"],
         prenom: data["Prenom"],
@@ -116,5 +118,12 @@ class DatabaseUsers {
         await userCollection.where("isAdmin", isEqualTo: true).get();
     List<DocumentSnapshot> myDocCount = myDoc.docs;
     return myDocCount.length;
+  }
+
+  Future getDoc(String email) async {
+    QuerySnapshot myDoc =
+        await userCollection.where("email", isEqualTo: email).limit(1).get();
+    //DocumentSnapshot doc = myDoc.docs;
+    return myDoc;
   }
 }
