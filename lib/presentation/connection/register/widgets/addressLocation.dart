@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/connection/register/screen/registerPage.dart';
+import 'package:partagez_vos_50/presentation/commun/textField.dart';
 
 import '../../../commun/constants.dart';
 
@@ -34,53 +35,36 @@ class _AddressFormWidgetState extends State<AddressFormWidget> {
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 35, color: mSecondColor),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 13.0),
-          child: Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  decoration: const InputDecoration(labelText: "Nom"),
-                  controller: nomReturn,
-                  keyboardType: TextInputType.name,
-                ),
-              ),
-              const SizedBox(
-                width: 15,
-              ),
-              Expanded(
-                child: TextField(
-                  decoration: const InputDecoration(labelText: "Prenom"),
+        const SizedBox(height: 20),
+        Row(
+          children: [
+            Expanded(
+              child: mTextField(title: "Ton Nom", controller: nomReturn),
+            ),
+            const SizedBox(
+              width: 15,
+            ),
+            Expanded(
+              child: mTextField(
+                  title: "Ton Prenom",
                   controller: prenomReturn,
-                  keyboardType: TextInputType.name,
-                ),
-              )
-            ],
-          ),
+                  inputType: TextInputType.name),
+            )
+          ],
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20.0),
-          child: TextField(
-            decoration: const InputDecoration(labelText: "Rue"),
+        const SizedBox(height: 20),
+        mTextField(
+            title: "Adresse",
             controller: widget.rueReturn,
-            keyboardType: TextInputType.streetAddress,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 20),
-          child: TextField(
-            decoration: const InputDecoration(labelText: "Ville"),
-            controller: widget.villeReturn,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 20),
-          child: TextField(
-            decoration: const InputDecoration(labelText: "Code Postal"),
+            inputType: TextInputType.streetAddress),
+        const SizedBox(height: 20),
+        mTextField(title: "Ville", controller: widget.villeReturn),
+        const SizedBox(height: 20),
+        mTextField(
+            title: "Code Postal",
             controller: widget.postalCodeReturn,
-            keyboardType: TextInputType.number,
-          ),
-        ),
+            inputType: TextInputType.number),
+        const SizedBox(height: 20)
       ],
     );
   }

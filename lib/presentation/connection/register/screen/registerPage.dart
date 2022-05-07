@@ -10,6 +10,7 @@ import 'package:time/time.dart';
 
 import '../../../../data/bdd/auth/authentication.dart';
 import '../../../commun/appbar.dart';
+import '../../../commun/button.dart';
 import '../../../commun/customToast.dart';
 
 //controleur
@@ -29,6 +30,15 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  LinearGradient gradientSignInGoogle = const LinearGradient(
+      colors: [Colors.blue, Color.fromARGB(255, 47, 84, 148)],
+      begin: Alignment.bottomCenter,
+      end: Alignment.topCenter);
+
+  LinearGradient backGradient = const LinearGradient(
+      colors: [mBackgroundColor, mBackgroundColor],
+      begin: Alignment.bottomCenter,
+      end: Alignment.topCenter);
   //init firebase auth
   final AuthenticationService _auth = AuthenticationService();
   //step params
@@ -40,7 +50,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       appBar: myAppBar(context),
       body: Padding(
-        padding: const EdgeInsets.only(top: 8.0),
+        padding: const EdgeInsets.only(top: 15.0),
         child: Stepper(
           //type de stepper
           type: StepperType.horizontal,
@@ -71,61 +81,64 @@ class _RegisterPageState extends State<RegisterPage> {
           controlsBuilder: (context, ControlsDetails details) {
             return Column(
               children: [
-                const Divider(thickness: 2),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     currentStep == 0
                         ? Container()
                         : Expanded(
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  primary: mBackgroundColor),
-                              onPressed: details.onStepCancel,
-                              child: const Text(
-                                "Retour !",
-                                style: TextStyle(
-                                    color: mSecondColor,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 20),
+                              child: mMyButton(
+                                  texte: "Retour",
+                                  onpressed: details.onStepCancel,
+                                  gradient: backGradient,
+                                  textColor: mPrimaryColor,
+                                  weight: FontWeight.bold,
+                                  fontSize: 19),
                             ),
                           ),
-                    const SizedBox(
-                      width: 20,
-                    ),
                     currentStep == isLastStep
                         ? Expanded(
-                            child: ElevatedButton(
-                              onPressed: details.onStepContinue,
-                              child: const Text("Enregistrement !"),
-                            ),
+                            child: mMyButton(
+                                texte: "Enregistrement",
+                                onpressed: details.onStepContinue),
                           )
                         : Expanded(
-                            child: ElevatedButton(
-                              onPressed: details.onStepContinue,
-                              child: const Text("Suite"),
-                            ),
+                            child: mMyButton(
+                                texte: "Suite",
+                                onpressed: details.onStepContinue),
                           ),
                   ],
                 ),
+                const Divider(thickness: 2),
                 const SizedBox(
-                  height: 20,
+                  height: 45,
                 ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  child: mMyButton(
+                    texte: "CONNEXION AVEC GOOGLE",
+                    onpressed: () => _auth.signInWithGoogle(context),
+                    gradient: gradientSignInGoogle,
+                  ),
+                ),
+                const SizedBox(height: 20),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton(
-                      style:
-                          ElevatedButton.styleFrom(primary: mBackgroundColor),
-                      onPressed: (() => Navigator.pushNamed(context, '/login')),
-                      child: const Text(
-                        "Deja un compte ?",
-                        style: TextStyle(
-                            color: mSecondColor, fontWeight: FontWeight.bold),
-                      ),
+                    Text(
+                      "Deja un compte ? ",
+                      style: mTextBasic,
                     ),
+                    TextButton(
+                        onPressed: (() =>
+                            Navigator.pushNamed(context, '/login')),
+                        child: const Text(
+                          "Se connecter",
+                        )),
                   ],
-                ),
+                )
               ],
             );
           },

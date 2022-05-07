@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:motion_toast/motion_toast.dart';
 
 MotionToast? errorToast(BuildContext context, String description) {
-  MotionToast.error(title: const Text("Erreur"), description: Text(description))
-      .show(context);
+  MotionToast.error(
+    title: const Text("Erreur"),
+    description: Text(description),
+    toastDuration: const Duration(seconds: 2),
+  ).show(context);
   FocusScope.of(context).unfocus();
   return null;
 }

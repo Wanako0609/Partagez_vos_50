@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:partagez_vos_50/presentation/commun/textField.dart';
+
+import '../../../commun/constants.dart';
 
 class TextFieldSection extends StatelessWidget {
   const TextFieldSection(
@@ -18,20 +21,19 @@ class TextFieldSection extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0),
-          child: TextField(
-              decoration: InputDecoration(
-                  labelText: "Email", errorText: errorEmailMessage),
+          child: mTextField(
+              title: "Ton Email",
               controller: emailReturn,
-              keyboardType: TextInputType.emailAddress),
+              errorText: errorEmailMessage,
+              inputType: TextInputType.emailAddress),
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom: 20),
-          child: TextField(
-            decoration: InputDecoration(
-                labelText: "Mot de passe", errorText: errorPasswordMessage),
-            controller: passwordReturn,
-            obscureText: true,
-          ),
+          padding: const EdgeInsets.only(bottom: 28),
+          child: mTextField(
+              title: "Mot de Passe",
+              controller: passwordReturn,
+              errorText: errorPasswordMessage,
+              obsucureText: true),
         ),
       ],
     );

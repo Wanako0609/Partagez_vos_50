@@ -4,11 +4,25 @@ import 'package:flutter/material.dart';
 const mPrimaryColor = Color.fromARGB(255, 255, 0, 0);
 const mSecondColor = Color.fromARGB(255, 129, 0, 0);
 const mTercierColor = Color.fromARGB(255, 83, 24, 46);
+
 const mErrorColor = Color.fromARGB(255, 158, 78, 58);
 const mBackgroundColor = Color.fromARGB(255, 209, 209, 209);
-const mAppBarBackgroundColor = Color.fromARGB(255, 189, 24, 24);
 
-const mTextColor = Color.fromARGB(255, 0, 0, 0);
+const mAppBarBackgroundColor = Color.fromARGB(255, 189, 24, 24);
+const mAppBarBackgroundColorEnd = Color.fromARGB(255, 216, 55, 55);
+
+const mAppBarGradient = LinearGradient(
+    colors: [mAppBarBackgroundColor, mAppBarBackgroundColorEnd],
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter);
+
+const mButtonGradient = LinearGradient(
+    colors: [mAppBarBackgroundColor, mAppBarBackgroundColorEnd],
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter);
+
+const mTextColor = Color.fromARGB(255, 39, 39, 39);
+TextStyle mTextBasic = const TextStyle(color: mTextColor, fontSize: 15);
 const mIconColor = Color.fromARGB(255, 0, 0, 0);
 
 const mTextFieldBackgroundColor = Color.fromARGB(255, 185, 185, 185);
@@ -79,9 +93,6 @@ class MyTheme {
     colorScheme: const ColorScheme.light(
       primary: mPrimaryColor,
     ),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: mAppBarBackgroundColor,
-    ),
     //scaffold background
     scaffoldBackgroundColor: mBackgroundColor,
     //font family
@@ -95,7 +106,7 @@ class MyTheme {
       counterStyle: TextStyle(color: mTextColor),
       hintStyle: TextStyle(color: mTextColor),
       fillColor: mTextFieldBackgroundColor,
-      filled: false,
+      filled: true,
       errorBorder: OutlineInputBorder(
         borderSide: BorderSide(color: mErrorColor, width: 2),
         borderRadius: BorderRadius.all(
@@ -117,7 +128,10 @@ class MyTheme {
       style: ElevatedButton.styleFrom(primary: mSecondColor),
     ),
     textButtonTheme: TextButtonThemeData(
-      style: TextButton.styleFrom(primary: mSecondColor),
+      style: TextButton.styleFrom(
+          primary: mSecondColor,
+          textStyle: const TextStyle(
+              color: mSecondColor, fontWeight: FontWeight.bold, fontSize: 16)),
     ),
     cardColor: mCardBackgroundColor,
   );

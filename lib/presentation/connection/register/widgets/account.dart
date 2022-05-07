@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:partagez_vos_50/presentation/commun/textField.dart';
 
 import '../../../commun/constants.dart';
 
@@ -69,21 +70,19 @@ class _AccountWidgetState extends State<AccountWidget> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0),
-          child: TextField(
-            decoration: InputDecoration(
-                labelText: "Email", errorText: errorEmailMessage),
-            controller: widget.emailReturn,
-            keyboardType: TextInputType.emailAddress,
-          ),
+          child: mTextField(
+              title: "Ton Email",
+              controller: widget.emailReturn,
+              errorText: errorEmailMessage,
+              inputType: TextInputType.emailAddress),
         ),
         Padding(
           padding: const EdgeInsets.only(bottom: 20),
-          child: TextField(
-            decoration: InputDecoration(
-                errorText: errorPasswordMessage, labelText: "Mot de passe"),
-            controller: widget.passwordReturn,
-            obscureText: true,
-          ),
+          child: mTextField(
+              title: "Mot de Passe",
+              controller: widget.passwordReturn,
+              errorText: errorPasswordMessage,
+              obsucureText: true),
         ),
       ],
     );

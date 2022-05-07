@@ -21,7 +21,7 @@ class _PanelAdminState extends State<PanelAdmin> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: myAppBarStep(context),
+        appBar: myAppBarRetour(context: context, bottom: bottom()),
         body: const TabBarView(children: [
           //arg 0 stat part
           StatsAdmin(),
@@ -35,65 +35,25 @@ class _PanelAdminState extends State<PanelAdmin> {
   }
 }
 
-AppBar myAppBarStep(BuildContext context) {
-  Color colorUser = const Color.fromARGB(255, 255, 73, 73);
-
-  bool canRetour = false;
-  if (Navigator.canPop(context)) {
-    canRetour == true;
-  }
-
-  final user = Provider.of<AppUser?>(context);
-
-  bool connected;
-
-  if (user == null) {
-    connected = false;
-  } else {
-    connected = true;
-  }
-
-  return AppBar(
-    title: TextButton(
-      onPressed: (() => Navigator.pushNamed(context, '/')),
-      child: const Text(
-        "Partagez vos 50",
-        textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.black, fontFamily: "logo", fontSize: 20),
-      ),
-    ),
-    centerTitle: true,
-    leading: const GoBackButton(),
-    actions: [
-      connected ? const AccountMenu() : IconAccount(colorUser: colorUser),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: IconButton(
-          onPressed: () {},
-          tooltip: "My Bag",
-          icon: const Icon(Icons.shopping_bag, color: mIconColor),
-        ),
-      ),
-    ],
-    bottom: const PreferredSize(
-      preferredSize: Size.fromHeight(45.0),
-      child: TabBar(
-          indicatorColor: Colors.white,
-          labelStyle: mTextTab,
-          unselectedLabelStyle: mTextTabUnselected,
-          labelColor: Color.fromARGB(255, 31, 31, 31),
-          indicatorWeight: 3,
-          tabs: [
-            Text(
-              "Stats",
-            ),
-            Text(
-              "Produits",
-            ),
-            Text(
-              "Users",
-            ),
-          ]),
-    ),
+PreferredSize bottom() {
+  return const PreferredSize(
+    preferredSize: Size.fromHeight(30.0),
+    child: TabBar(
+        indicatorColor: Colors.white,
+        labelStyle: mTextTab,
+        unselectedLabelStyle: mTextTabUnselected,
+        labelColor: Color.fromARGB(255, 31, 31, 31),
+        indicatorWeight: 3,
+        tabs: [
+          Text(
+            "Stats",
+          ),
+          Text(
+            "Produits",
+          ),
+          Text(
+            "Users",
+          ),
+        ]),
   );
 }

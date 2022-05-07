@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
 import 'package:partagez_vos_50/data/models/AppUser.dart';
-import 'package:partagez_vos_50/presentation/commun/sign_in_button.dart';
 import 'package:partagez_vos_50/presentation/connection/login/widgets/text_field.dart';
 import 'package:time/time.dart';
 import '../../../../data/bdd/auth/authentication.dart';
 import 'package:partagez_vos_50/presentation/commun/appbar.dart';
 
+import '../../../commun/button.dart';
 import '../../../commun/customToast.dart';
 
 class MyLoginPage extends StatelessWidget {
@@ -47,6 +47,11 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
   String? errorEmailMessage;
   String? errorPasswordMessage;
   String result = "";
+
+  LinearGradient GradientSignInGoogle = const LinearGradient(
+      colors: [Colors.blue, Color.fromARGB(255, 47, 84, 148)],
+      begin: Alignment.bottomCenter,
+      end: Alignment.topCenter);
 
   //fonction
   void voidfield(String email, String password) {
@@ -113,40 +118,44 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
       children: [
         const Text(
           'Connexion',
-          style: TextStyle(fontSize: 40, color: mSecondColor),
+          style: TextStyle(
+              fontSize: 40, color: mSecondColor, fontWeight: FontWeight.w600),
         ),
         TextFieldSection(
             errorEmailMessage: errorEmailMessage,
             errorPasswordMessage: errorPasswordMessage,
             emailReturn: emailReturn,
             passwordReturn: passwordReturn),
-        ElevatedButton(
-          onPressed: (() {
-            voidfield(emailReturn.text, passwordReturn.text);
-          }),
-          child: const Text("Connexion", style: TextStyle(fontSize: 15)),
-        ),
+        mMyButton(
+            texte: "CONNEXION",
+            onpressed: () => voidfield(emailReturn.text, passwordReturn.text)),
         Text(
           result,
           style: const TextStyle(color: Colors.red),
         ),
-        myGoogleSignInButton(context),
+        const Divider(thickness: 2),
+        const SizedBox(height: 45),
+        mMyButton(
+          texte: "CONNEXION AVEC GOOGLE",
+          onpressed: () => _auth.signInWithGoogle(context),
+          gradient: GradientSignInGoogle,
+        ),
         const SizedBox(height: 20),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              style:
-                  ElevatedButton.styleFrom(primary: mTextFieldBackgroundColor),
+            Text(
+              "Pas de compte ?",
+              style: mTextBasic,
+            ),
+            TextButton(
               onPressed: (() => Navigator.pushNamed(context, '/register')),
               child: const Text(
-                "Se cree un compte !",
-                style:
-                    TextStyle(color: mSecondColor, fontWeight: FontWeight.bold),
+                "Cree son compte !",
               ),
             ),
           ],
-        )
+        ),
       ],
     );
   }

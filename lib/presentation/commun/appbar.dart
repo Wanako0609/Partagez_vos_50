@@ -9,6 +9,17 @@ import 'package:partagez_vos_50/presentation/connection/login/screen/login.dart'
 
 final AuthenticationService _auth = AuthenticationService();
 
+const toolbarHeight = 70.0;
+Container shape = Container(
+  decoration: const BoxDecoration(
+    gradient: mAppBarGradient,
+    borderRadius: BorderRadius.only(
+      bottomLeft: Radius.circular(20),
+      bottomRight: Radius.circular(20),
+    ),
+  ),
+);
+
 AppBar myAppBar(BuildContext context) {
   Color colorUser = const Color.fromARGB(255, 255, 73, 73);
 
@@ -23,18 +34,22 @@ AppBar myAppBar(BuildContext context) {
   }
 
   return AppBar(
+    toolbarHeight: toolbarHeight,
     title: TextButton(
       onPressed: (() => Navigator.pushNamed(context, '/')),
       child: const Text(
         "Partagez vos 50",
         textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.black, fontFamily: "logo", fontSize: 20),
+        style: TextStyle(color: Colors.white, fontFamily: "logo", fontSize: 20),
       ),
     ),
+    backgroundColor: Colors.transparent,
+    elevation: 0.0,
     centerTitle: true,
-    leading: const Icon(Icons.clear_all, color: mIconColor),
+    flexibleSpace: shape,
+    leading:
+        connected ? const AccountMenu() : IconAccount(colorUser: colorUser),
     actions: [
-      connected ? const AccountMenu() : IconAccount(colorUser: colorUser),
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: IconButton(
@@ -47,7 +62,8 @@ AppBar myAppBar(BuildContext context) {
   );
 }
 
-AppBar myAppBarRetour(BuildContext context) {
+AppBar myAppBarRetour(
+    {required BuildContext context, PreferredSizeWidget? bottom = null}) {
   Color colorUser = const Color.fromARGB(255, 255, 73, 73);
 
   bool canRetour = false;
@@ -66,6 +82,7 @@ AppBar myAppBarRetour(BuildContext context) {
   }
 
   return AppBar(
+    toolbarHeight: toolbarHeight,
     title: TextButton(
       onPressed: (() => Navigator.pushNamed(context, '/')),
       child: const Text(
@@ -74,10 +91,12 @@ AppBar myAppBarRetour(BuildContext context) {
         style: TextStyle(color: Colors.black, fontFamily: "logo", fontSize: 20),
       ),
     ),
+    flexibleSpace: shape,
+    backgroundColor: Colors.transparent,
+    elevation: 0.0,
     centerTitle: true,
     leading: const GoBackButton(),
     actions: [
-      connected ? const AccountMenu() : IconAccount(colorUser: colorUser),
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: IconButton(
@@ -87,6 +106,7 @@ AppBar myAppBarRetour(BuildContext context) {
         ),
       ),
     ],
+    bottom: bottom,
   );
 }
 
