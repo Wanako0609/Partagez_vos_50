@@ -3,16 +3,11 @@ import 'package:provider/provider.dart';
 
 import '../../../../data/bdd/firestore/database_user.dart';
 import '../../../../data/models/AppUser.dart';
-import '../widget/widget_user_isadmin_section.dart';
+import '../widget/btn_admin_widget.dart';
 
-class IsAdminSectionVm extends StatefulWidget {
-  const IsAdminSectionVm({Key? key}) : super(key: key);
+class AdminButton extends StatelessWidget {
+  const AdminButton({Key? key}) : super(key: key);
 
-  @override
-  State<IsAdminSectionVm> createState() => _IsAdminSectionVmState();
-}
-
-class _IsAdminSectionVmState extends State<IsAdminSectionVm> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<AppUser?>(context);
@@ -23,7 +18,7 @@ class _IsAdminSectionVmState extends State<IsAdminSectionVm> {
       return StreamProvider<AppUser?>.value(
           value: DatabaseUsers(uid: user.uid).userData,
           initialData: null,
-          child: const UserIsAdminWidget());
+          child: const AdminButtonWidget());
     }
   }
 }

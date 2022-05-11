@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:partagez_vos_50/data/models/Addresse.dart';
+import 'package:partagez_vos_50/data/models/addresse.dart';
 
 import '../../models/AppUser.dart';
 

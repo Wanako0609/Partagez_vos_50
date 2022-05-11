@@ -1,4 +1,4 @@
-import 'package:partagez_vos_50/data/models/Addresse.dart';
+import 'package:partagez_vos_50/data/models/addresse.dart';
 
 class AppUser {
   final String uid;

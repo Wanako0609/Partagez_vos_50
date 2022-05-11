@@ -12,6 +12,6 @@ class AddImgVetSection extends StatefulWidget {
 class _AddImgVetSectionState extends State<AddImgVetSection> {
   @override
   Widget build(BuildContext context) {
-    return const AddImgWidget();
+    return const AddImgWidget(size: 100);
   }
 }

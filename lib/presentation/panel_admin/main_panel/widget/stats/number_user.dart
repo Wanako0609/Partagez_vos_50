@@ -28,7 +28,11 @@ class _UserNumberState extends State<UserNumber> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: const [
-                      Text("Utilisateur", style: mTextUserInformation),
+                      Text("Utilisateur",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: mTercierColor,
+                              fontWeight: FontWeight.bold)),
                       Icon(Icons.person)
                     ],
                   ),
@@ -45,7 +49,11 @@ class _UserNumberState extends State<UserNumber> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
-                    Text("Utilisateur", style: mTextUserInformation),
+                    Text("Utilisateur",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: mTercierColor,
+                            fontWeight: FontWeight.bold)),
                     SizedBox(width: 20),
                     Icon(Icons.verified_user)
                   ],

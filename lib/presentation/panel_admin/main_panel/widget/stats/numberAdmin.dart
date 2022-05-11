@@ -28,7 +28,11 @@ class _AdminUserNumberState extends State<AdminUserNumber> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: const [
-                      Text("Admin", style: mTextUserInformation),
+                      Text("Admin",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: mTercierColor,
+                              fontWeight: FontWeight.bold)),
                       Icon(Icons.verified_user)
                     ],
                   ),
@@ -45,7 +49,11 @@ class _AdminUserNumberState extends State<AdminUserNumber> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
-                    Text("Admin", style: mTextUserInformation),
+                    Text("Admin",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: mTercierColor,
+                            fontWeight: FontWeight.bold)),
                     SizedBox(width: 20),
                     Icon(Icons.verified_user)
                   ],

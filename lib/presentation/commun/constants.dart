@@ -22,11 +22,17 @@ const mButtonGradient = LinearGradient(
     end: Alignment.topCenter);
 
 const mTextColor = Color.fromARGB(255, 39, 39, 39);
+
 TextStyle mTextBasic = const TextStyle(color: mTextColor, fontSize: 15);
+
 const mIconColor = Color.fromARGB(255, 0, 0, 0);
 
 const mTextFieldBackgroundColor = Color.fromARGB(255, 185, 185, 185);
+
 const mCardBackgroundColor = Color.fromARGB(255, 143, 142, 142);
+
+const mTitle =
+    TextStyle(fontSize: 40, color: mSecondColor, fontWeight: FontWeight.w600);
 
 //item colors
 const mPriceColor = Color.fromARGB(255, 56, 56, 56);
@@ -49,16 +55,8 @@ const mTextStepName = TextStyle(color: mTextColor);
 const mTextVerifyItem = TextStyle(color: mTextColor, fontSize: 18);
 
 //user profils
-const mCardUserBackgroundColor = Color.fromARGB(150, 114, 114, 114);
-const mTextUserTitle = TextStyle(
-  fontFamily: "logo",
-  fontSize: 30,
-  color: mSecondColor,
-);
-const mTextUserInformation =
-    TextStyle(fontSize: 20, color: mTercierColor, fontWeight: FontWeight.bold);
-const mTextUserInformationUser = TextStyle(fontSize: 20, color: Colors.black);
-
+const mNameStyle = TextStyle(fontSize: 17, fontWeight: FontWeight.bold);
+const mContainUsers = TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
 //tab color
 const mTextTab =
     TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold);
@@ -67,23 +65,6 @@ const mTextTabUnselected =
 
 const mNumberStats =
     TextStyle(fontSize: 20, color: mPrimaryColor, fontWeight: FontWeight.bold);
-
-//design btn user profil
-ElevatedButton mUserElevatedButton(String name, void Function() func) {
-  return ElevatedButton(
-    onPressed: func,
-    child: Text(name),
-    style: ElevatedButton.styleFrom(primary: const Color(0xFF641220)),
-  );
-}
-
-ElevatedButton mUserElevatedButtonFuture(String name, void func) {
-  return ElevatedButton(
-    onPressed: (() => func),
-    child: Text(name),
-    style: ElevatedButton.styleFrom(primary: const Color(0xFF641220)),
-  );
-}
 
 class MyTheme {
   final theme1 = ThemeData(

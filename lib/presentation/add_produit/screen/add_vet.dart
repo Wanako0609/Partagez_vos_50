@@ -1,10 +1,11 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/appbar.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../commun/constants.dart';
+import '../viewmodel/vm_add_img.dart';
 import '../viewmodel/vm_information.dart';
-import '../widget/widget_add_img.dart';
 
 class AddVetPage extends StatelessWidget {
   const AddVetPage({Key? key}) : super(key: key);
@@ -29,9 +30,10 @@ class AddVetPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text("Ajout de vetement !", style: mTextUserTitle),
+                const AutoSizeText("Ajout de vetement !",
+                    style: mTitle, maxLines: 1),
                 const SizedBox(height: 20),
-                const AddImgWidget(),
+                const AddImgVetSection(),
                 InformationVetVM(
                   tailleChoisis: tailleChoisis,
                   categoriesChoisis: categoriesChoisis,

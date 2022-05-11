@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:motion_toast/motion_toast.dart';
-import 'package:partagez_vos_50/data/models/Addresse.dart';
+import 'package:partagez_vos_50/data/models/addresse.dart';
 import 'package:partagez_vos_50/data/models/AppUser.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
 import 'package:partagez_vos_50/presentation/connection/register/widgets/account.dart';
 import 'package:partagez_vos_50/presentation/connection/register/widgets/addressLocation.dart';
-import 'package:partagez_vos_50/presentation/connection/register/widgets/verify.dart';
 import 'package:time/time.dart';
 
 import '../../../../data/bdd/auth/authentication.dart';
@@ -43,12 +42,12 @@ class _RegisterPageState extends State<RegisterPage> {
   final AuthenticationService _auth = AuthenticationService();
   //step params
   int currentStep = 0;
-  final isLastStep = 2;
+  final isLastStep = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(context),
+      appBar: myAppBar(context: context),
       body: Padding(
         padding: const EdgeInsets.only(top: 15.0),
         child: Stepper(
@@ -63,11 +62,8 @@ class _RegisterPageState extends State<RegisterPage> {
             if (currentStep == 0) {
               setState(() => currentStep += 1);
               testpassword();
-            } else if (currentStep == 1) {
-              setState(() => currentStep += 1);
             } else {
-              // currentStep == 2
-              sendInformation();
+              sendInformation(); //TODO envoie un mail
             }
           },
 
@@ -171,22 +167,6 @@ class _RegisterPageState extends State<RegisterPage> {
               villeReturn: villeReturn,
               prenomReturn: prenomReturn,
               nomReturn: nomReturn),
-        ),
-        Step(
-          isActive: currentStep >= 2,
-          state: currentStep <= 2 ? StepState.editing : StepState.complete,
-          title: const Text(
-            'Complete',
-            style: mTextStepName,
-          ),
-          content: VerifyPage(
-            email: emailReturn.text,
-            adresse: rueReturn.text,
-            ville: villeReturn.text,
-            codePostal: postalCodeReturn.text,
-            nom: nomReturn.text,
-            prenom: prenomReturn.text,
-          ),
         ),
       ];
 

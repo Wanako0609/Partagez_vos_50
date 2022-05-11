@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/data/bdd/auth/authentication.dart';
 import 'package:provider/provider.dart';
 import '../../data/models/AppUser.dart';
-import '../profil_page/main_page/screen/userProfil.dart';
 import 'constants.dart';
-import '../../main.dart';
-import 'package:partagez_vos_50/presentation/connection/login/screen/login.dart';
 
 final AuthenticationService _auth = AuthenticationService();
 
@@ -20,7 +17,7 @@ Container shape = Container(
   ),
 );
 
-AppBar myAppBar(BuildContext context) {
+AppBar myAppBar({required BuildContext context, bool? homePath}) {
   Color colorUser = const Color.fromARGB(255, 255, 73, 73);
 
   final user = Provider.of<AppUser?>(context);
@@ -36,7 +33,9 @@ AppBar myAppBar(BuildContext context) {
   return AppBar(
     toolbarHeight: toolbarHeight,
     title: TextButton(
-      onPressed: (() => Navigator.pushNamed(context, '/')),
+      onPressed: homePath == null || false
+          ? () => Navigator.pushNamed(context, '/')
+          : () {},
       child: const Text(
         "Partagez vos 50",
         textAlign: TextAlign.center,
@@ -47,8 +46,7 @@ AppBar myAppBar(BuildContext context) {
     elevation: 0.0,
     centerTitle: true,
     flexibleSpace: shape,
-    leading:
-        connected ? const AccountMenu() : IconAccount(colorUser: colorUser),
+    leading: connected ? const _AccountConnect() : const _AccountNotConnect(),
     actions: [
       Padding(
         padding: const EdgeInsets.all(8.0),
@@ -63,7 +61,9 @@ AppBar myAppBar(BuildContext context) {
 }
 
 AppBar myAppBarRetour(
-    {required BuildContext context, PreferredSizeWidget? bottom = null}) {
+    {required BuildContext context,
+    PreferredSizeWidget? bottom = null,
+    bool? profilPath}) {
   Color colorUser = const Color.fromARGB(255, 255, 73, 73);
 
   bool canRetour = false;
@@ -88,7 +88,7 @@ AppBar myAppBarRetour(
       child: const Text(
         "Partagez vos 50",
         textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.black, fontFamily: "logo", fontSize: 20),
+        style: TextStyle(color: Colors.white, fontFamily: "logo", fontSize: 20),
       ),
     ),
     flexibleSpace: shape,
@@ -124,8 +124,46 @@ class GoBackButton extends StatelessWidget {
   }
 }
 
-class IconAccount extends StatelessWidget {
-  const IconAccount({
+//account btn
+class _AccountConnect extends StatelessWidget {
+  const _AccountConnect({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        Navigator.pushNamed(context, '/userProfil');
+      },
+      tooltip: "Mon compte",
+      icon: const Icon(
+        Icons.person,
+      ),
+      color: Colors.white,
+    );
+  }
+}
+
+class _AccountNotConnect extends StatelessWidget {
+  const _AccountNotConnect({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        Navigator.pushNamed(context, '/login');
+      },
+      tooltip: "Mon compte",
+      icon: const Icon(
+        Icons.person,
+      ),
+      color: mIconColor,
+    );
+  }
+}
+
+//NOT USE
+class _IconAccount extends StatelessWidget {
+  const _IconAccount({
     Key? key,
     required this.colorUser,
   }) : super(key: key);
@@ -147,8 +185,8 @@ class IconAccount extends StatelessWidget {
   }
 }
 
-class AccountMenu extends StatelessWidget {
-  const AccountMenu({
+class _AccountMenu extends StatelessWidget {
+  const _AccountMenu({
     Key? key,
   }) : super(key: key);
 

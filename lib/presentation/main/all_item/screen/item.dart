@@ -14,7 +14,7 @@ class MyItemPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(context),
+      appBar: myAppBar(context: context),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView.builder(

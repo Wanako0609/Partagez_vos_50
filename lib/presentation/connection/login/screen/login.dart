@@ -15,7 +15,7 @@ class MyLoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(context),
+      appBar: myAppBar(context: context),
       body: const Padding(
         padding: EdgeInsets.all(20),
         child: SingleChildScrollView(
@@ -101,9 +101,7 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
       });
     } else if (resultconnection is AppUser) {
       print("Connection reussit");
-      await 1.seconds.delay;
-      Navigator.pushNamed(context, '/');
-      successToast(context, "Connexion reussit", "Connecté avec \n $email");
+      Navigator.pushNamed(context, '/userProfil');
       FocusScope.of(context).unfocus();
     } else {
       setState(() {
@@ -116,11 +114,7 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
-          'Connexion',
-          style: TextStyle(
-              fontSize: 40, color: mSecondColor, fontWeight: FontWeight.w600),
-        ),
+        const Text('Connexion', style: mTitle),
         TextFieldSection(
             errorEmailMessage: errorEmailMessage,
             errorPasswordMessage: errorPasswordMessage,

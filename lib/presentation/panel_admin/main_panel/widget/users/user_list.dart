@@ -4,7 +4,7 @@ import 'package:partagez_vos_50/presentation/commun/constants.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../data/models/AppUser.dart';
-import '../../../../profil_page/communWidget/error.dart';
+import '../../../../commun/error_connexion.dart';
 import 'alertedialog.dart';
 
 class UserListWidget extends StatelessWidget {

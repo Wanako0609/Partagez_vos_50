@@ -4,7 +4,6 @@ import 'package:partagez_vos_50/data/bdd/auth/authentication.dart';
 import 'package:partagez_vos_50/presentation/commun/routeGenerator.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'presentation/commun/constants.dart';
 import 'presentation/main/screen/mainPage.dart';
 import 'presentation/commun/appbar.dart';
@@ -35,12 +34,11 @@ class MyApp extends StatelessWidget {
       value: AuthenticationService().user,
       initialData: null,
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: (settings) => RouteGenerator.generateRoute(settings),
-        title: 'Partagez vos 50',
-        theme: MyTheme().theme1,
-        home: const MyMainPage(),
-      ),
+          debugShowCheckedModeBanner: false,
+          onGenerateRoute: (settings) => RouteGenerator.generateRoute(settings),
+          title: 'Partagez vos 50',
+          theme: MyTheme().theme1,
+          home: const MyMainPage()),
     );
   }
 }
@@ -51,7 +49,7 @@ class MyMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(context),
+      appBar: myAppBar(context: context, homePath: true),
       body: const Padding(
         padding: EdgeInsets.all(8.0),
         child: SingleChildScrollView(

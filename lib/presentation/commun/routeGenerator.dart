@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/panel_admin/main_panel/screen/panel_admin.dart';
-import 'package:partagez_vos_50/presentation/profil_page/change_information/screen/change_address.dart';
-import 'package:partagez_vos_50/presentation/profil_page/change_information/screen/change_name.dart';
-
 import '../../main.dart';
 import '../add_produit/screen/add_vet.dart';
+import '../add_produit/test/cropper.dart';
 import '../connection/login/screen/login.dart';
 import '../connection/register/screen/registerPage.dart';
-import '../profil_page/main_page/screen/userProfil.dart';
+import '../profil_page/main/screen/profilpage.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -33,21 +31,21 @@ class RouteGenerator {
       case '/userProfil':
         return MaterialPageRoute(
           builder: (context) {
-            return const UserProfilPage();
+            return const ProfilPage();
           },
         );
-      case '/userProfil/changeName':
-        return MaterialPageRoute(
-          builder: (context) {
-            return const UserChangeName();
-          },
-        );
-      case '/userProfil/changeAddress':
-        return MaterialPageRoute(
-          builder: (context) {
-            return const UserChangeAddress();
-          },
-        );
+      // case '/userProfil/changeName':
+      //   return MaterialPageRoute(
+      //     builder: (context) {
+      //       return const UserChangeName();
+      //     },
+      //   );
+      // case '/userProfil/changeAddress':
+      //   return MaterialPageRoute(
+      //     builder: (context) {
+      //       return const UserChangeAddress();
+      //     },
+      //   );
       case '/userProfil/panelAdmin':
         return MaterialPageRoute(
           builder: (context) {
@@ -58,6 +56,13 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (context) {
             return const AddVetPage();
+          },
+        );
+
+      case '/addVet/test':
+        return MaterialPageRoute(
+          builder: (context) {
+            return const CropperScreen();
           },
         );
 

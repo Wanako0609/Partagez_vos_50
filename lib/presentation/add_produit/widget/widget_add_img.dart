@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../test/cropper.dart';
+
 class AddImgWidget extends StatefulWidget {
-  const AddImgWidget({Key? key}) : super(key: key);
+  const AddImgWidget({Key? key, required this.size}) : super(key: key);
+
+  final double size;
 
   @override
   State<AddImgWidget> createState() => _AddImgWidgetState();
@@ -56,7 +60,7 @@ class _AddImgWidgetState extends State<AddImgWidget> {
           child: GestureDetector(
             child: showIcon(image),
             onTap: () {
-              getImage();
+              Navigator.pushNamed(context, "/addVet/test");
             },
           )),
     );

@@ -3,7 +3,7 @@ import 'package:partagez_vos_50/presentation/panel_admin/main_panel/widget/widge
 import 'package:provider/provider.dart';
 
 import '../../../../data/models/AppUser.dart';
-import '../../../profil_page/communWidget/error.dart';
+import '../../../commun/error_connexion.dart';
 
 class VmAjoutVet extends StatelessWidget {
   const VmAjoutVet({Key? key}) : super(key: key);
