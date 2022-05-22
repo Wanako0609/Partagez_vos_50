@@ -3,9 +3,7 @@ import 'package:partagez_vos_50/presentation/commun/appbar.dart';
 import 'package:partagez_vos_50/presentation/panel_admin/main_panel/screen/stats.dart';
 import 'package:partagez_vos_50/presentation/panel_admin/main_panel/screen/users.dart';
 import 'package:partagez_vos_50/presentation/panel_admin/main_panel/viewmodels/vm_ajout_vet.dart';
-import 'package:provider/provider.dart';
 
-import '../../../../data/models/AppUser.dart';
 import '../../../commun/constants.dart';
 
 class PanelAdmin extends StatefulWidget {

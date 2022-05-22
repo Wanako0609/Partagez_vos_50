@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class AddVetDescription extends StatelessWidget {
   const AddVetDescription(
-      {required this.label, required this.controller, this.number});
+      {Key? key, required this.label, required this.controller, this.number})
+      : super(key: key);
 
   final String label;
   final TextEditingController controller;

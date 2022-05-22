@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/panel_admin/main_panel/widget/widget_ajout_vet.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../data/models/AppUser.dart';
+import '../../../../data/models/appuser.dart';
 import '../../../commun/error_connexion.dart';
 
 class VmAjoutVet extends StatelessWidget {

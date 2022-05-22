@@ -1,7 +1,9 @@
+// ignore_for_file: unused_element
+
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/data/bdd/auth/authentication.dart';
 import 'package:provider/provider.dart';
-import '../../data/models/AppUser.dart';
+import '../../data/models/appuser.dart';
 import 'constants.dart';
 
 final AuthenticationService _auth = AuthenticationService();
@@ -18,8 +20,6 @@ Container shape = Container(
 );
 
 AppBar myAppBar({required BuildContext context, bool? homePath}) {
-  Color colorUser = const Color.fromARGB(255, 255, 73, 73);
-
   final user = Provider.of<AppUser?>(context);
 
   bool connected;
@@ -62,10 +62,8 @@ AppBar myAppBar({required BuildContext context, bool? homePath}) {
 
 AppBar myAppBarRetour(
     {required BuildContext context,
-    PreferredSizeWidget? bottom = null,
+    PreferredSizeWidget? bottom,
     bool? profilPath}) {
-  Color colorUser = const Color.fromARGB(255, 255, 73, 73);
-
   bool canRetour = false;
   if (Navigator.canPop(context)) {
     canRetour == true;
@@ -73,6 +71,7 @@ AppBar myAppBarRetour(
 
   final user = Provider.of<AppUser?>(context);
 
+  // ignore: unused_local_variable
   bool connected;
 
   if (user == null) {

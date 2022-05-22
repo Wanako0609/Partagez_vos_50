@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/data/bdd/firestore/database_user.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../data/models/AppUser.dart';
+import '../../../../../data/models/appuser.dart';
 import '../../../../commun/error_connexion.dart';
 import 'alertedialog.dart';
 

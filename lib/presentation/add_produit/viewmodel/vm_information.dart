@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 import '../widget/widget_information.dart';
 import '../widget/widget_multiselect.dart';
 
+// ignore: must_be_immutable
 class InformationVetVM extends StatefulWidget {
   InformationVetVM(
-      {required this.titleController,
+      {Key? key,
+      required this.titleController,
       required this.descriptionController,
       required this.priceController,
       required this.categoriesChoisis,
-      required this.tailleChoisis});
+      required this.tailleChoisis})
+      : super(key: key);
 
   TextEditingController titleController;
   TextEditingController descriptionController;

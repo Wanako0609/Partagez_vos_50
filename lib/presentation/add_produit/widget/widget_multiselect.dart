@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:multiselect/multiselect.dart';
 
+// ignore: must_be_immutable
 class SelectInformation extends StatefulWidget {
   SelectInformation(
-      {required this.list, required this.whenEmpty, required this.listReturn});
+      {Key? key,
+      required this.list,
+      required this.whenEmpty,
+      required this.listReturn})
+      : super(key: key);
 
   final String whenEmpty;
   final List<String> list;

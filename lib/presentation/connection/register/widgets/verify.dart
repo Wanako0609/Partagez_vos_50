@@ -10,6 +10,7 @@ class VerifyPage extends StatefulWidget {
   final String nom;
   final String prenom;
 
+  // ignore: use_key_in_widget_constructors
   const VerifyPage(
       {required this.email,
       required this.adresse,

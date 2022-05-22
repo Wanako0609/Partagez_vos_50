@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../data/models/AppUser.dart';
+import '../../../../data/models/appuser.dart';
 import 'button.dart';
 
 class AdminButtonWidget extends StatelessWidget {

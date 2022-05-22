@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/presentation/main/screen/mainPage.dart';
+import 'package:partagez_vos_50/presentation/main/screen/main_page.dart';
 
-import '../../../data/models/Produit.dart';
+import '../../../data/models/produit.dart';
 import '../all_item/screen/item.dart';
-import 'ListOfProducts.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
 
 //une partie de la page principal
+// ignore: must_be_immutable
 class Section extends StatelessWidget {
   Section(
-      {this.title = "Titre de colone",
+      {Key? key,
+      this.title = "Titre de colone",
       this.listItem = const MyMainColumn(),
-      required this.produits});
+      required this.produits})
+      : super(key: key);
 
   //listItem et produits doivent etre le meme !
   final String title;

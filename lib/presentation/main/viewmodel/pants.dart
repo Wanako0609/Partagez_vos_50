@@ -1,4 +1,4 @@
-import '../../../data/models/Produit.dart';
+import '../../../data/models/produit.dart';
 
 final List<Produit> bottomProduits = <Produit>[
   Produit(

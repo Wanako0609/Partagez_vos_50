@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:motion_toast/motion_toast.dart';
 import 'package:partagez_vos_50/data/models/addresse.dart';
-import 'package:partagez_vos_50/data/models/AppUser.dart';
+import 'package:partagez_vos_50/data/models/appuser.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
 import 'package:partagez_vos_50/presentation/connection/register/widgets/account.dart';
-import 'package:partagez_vos_50/presentation/connection/register/widgets/addressLocation.dart';
+import 'package:partagez_vos_50/presentation/connection/register/widgets/address_location.dart';
 import 'package:time/time.dart';
 
 import '../../../../data/bdd/auth/authentication.dart';
 import '../../../commun/appbar.dart';
 import '../../../commun/button.dart';
-import '../../../commun/customToast.dart';
+import '../../../commun/custom_toast.dart';
 
 //controleur
 var emailReturn = TextEditingController();
@@ -112,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 45,
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: mMyButton(
                     texte: "CONNEXION AVEC GOOGLE",
                     onpressed: () => _auth.signInWithGoogle(context),

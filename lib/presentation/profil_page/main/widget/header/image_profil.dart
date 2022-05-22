@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ImageProfilPage extends StatelessWidget {
-  const ImageProfilPage({this.iconSize = 50});
+  const ImageProfilPage({Key? key, this.iconSize = 50}) : super(key: key);
 
   final double iconSize;
 

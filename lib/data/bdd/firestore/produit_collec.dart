@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:partagez_vos_50/data/models/Produit.dart';
+import 'package:partagez_vos_50/data/models/produit.dart';
 
 class DatabaseProduit {
   final String uid;

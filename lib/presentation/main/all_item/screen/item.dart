@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
 import 'package:partagez_vos_50/presentation/commun/appbar.dart';
 
-import '../../../../data/models/Produit.dart';
+import '../../../../data/models/produit.dart';
 
+// ignore: must_be_immutable
 class MyItemPage extends StatelessWidget {
-  MyItemPage({this.height = 150, this.width = 150, required this.produits});
+  MyItemPage(
+      {Key? key, this.height = 150, this.width = 150, required this.produits})
+      : super(key: key);
 
   double height;
   double width;

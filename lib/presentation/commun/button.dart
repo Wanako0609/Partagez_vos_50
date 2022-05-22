@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
 
@@ -30,9 +31,13 @@ Container mMyButton(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius)),
       ),
       onPressed: onpressed,
-      child: Text(texte,
-          style: TextStyle(
-              fontSize: fontSize, color: textColor, fontWeight: weight)),
+      child: AutoSizeText(
+        texte,
+        style:
+            TextStyle(fontSize: fontSize, color: textColor, fontWeight: weight),
+        maxLines: 1,
+        minFontSize: 15,
+      ),
     ),
   );
 }

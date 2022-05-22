@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../data/bdd/firestore/database_user.dart';
-import '../../../../data/models/AppUser.dart';
+import '../../../../data/models/appuser.dart';
 import '../widget/btn_admin_widget.dart';
 
 class AdminButton extends StatelessWidget {

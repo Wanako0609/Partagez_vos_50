@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widget/stats/numberAdmin.dart';
+import '../widget/stats/number_admin.dart';
 import '../widget/stats/number_user.dart';
 
 class StatsAdmin extends StatelessWidget {

@@ -1,9 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
-import 'package:partagez_vos_50/main.dart';
-import 'package:partagez_vos_50/data/models/AppUser.dart';
-import 'package:partagez_vos_50/data/bdd/auth/authentication.dart';
-import '../login/screen/login.dart';
+import 'package:partagez_vos_50/data/models/appuser.dart';
 import 'package:partagez_vos_50/presentation/commun/appbar.dart';
 
 class MyRegisterPage extends StatelessWidget {
@@ -32,7 +31,6 @@ class MyRegisterColumn extends StatefulWidget {
 
 class _MyRegisterColumnState extends State<MyRegisterColumn> {
   //cree l'instance de la BD
-  final AuthenticationService _auth = AuthenticationService();
   //variable
   final _emailReturn = TextEditingController();
   final _passwordReturn = TextEditingController();
@@ -90,7 +88,7 @@ class _MyRegisterColumnState extends State<MyRegisterColumn> {
         result = "Ce n'est pas une adresse valide";
       });
     } else if (resultconnection == AppUser) {
-      print("Enregistrement reussit");
+      log("Enregistrement reussit", name: "Register");
       setState(() {
         result = "Enregistrement reussit";
       });

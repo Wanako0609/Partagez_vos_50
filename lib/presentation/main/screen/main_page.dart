@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../viewmodel/pants.dart';
-import '../widgets/ListOfProducts.dart';
+import '../widgets/list_of_products.dart';
 import '../viewmodel/veste.dart';
 import '../widgets/section.dart';
 import '../viewmodel/top.dart';

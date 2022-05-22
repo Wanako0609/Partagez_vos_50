@@ -1,13 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
-import 'package:partagez_vos_50/data/models/AppUser.dart';
+import 'package:partagez_vos_50/data/models/appuser.dart';
 import 'package:partagez_vos_50/presentation/connection/login/widgets/text_field.dart';
-import 'package:time/time.dart';
 import '../../../../data/bdd/auth/authentication.dart';
 import 'package:partagez_vos_50/presentation/commun/appbar.dart';
 
 import '../../../commun/button.dart';
-import '../../../commun/customToast.dart';
 
 class MyLoginPage extends StatelessWidget {
   const MyLoginPage({Key? key}) : super(key: key);
@@ -48,7 +48,7 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
   String? errorPasswordMessage;
   String result = "";
 
-  LinearGradient GradientSignInGoogle = const LinearGradient(
+  LinearGradient mGradientSignInGoogle = const LinearGradient(
       colors: [Colors.blue, Color.fromARGB(255, 47, 84, 148)],
       begin: Alignment.bottomCenter,
       end: Alignment.topCenter);
@@ -100,7 +100,7 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
         result = "Mauvais mot de passe";
       });
     } else if (resultconnection is AppUser) {
-      print("Connection reussit");
+      log("Connection reussit", name: "Login");
       Navigator.pushNamed(context, '/userProfil');
       FocusScope.of(context).unfocus();
     } else {
@@ -132,7 +132,7 @@ class _MyLoginColumnState extends State<MyLoginColumn> {
         mMyButton(
           texte: "CONNEXION AVEC GOOGLE",
           onpressed: () => _auth.signInWithGoogle(context),
-          gradient: GradientSignInGoogle,
+          gradient: mGradientSignInGoogle,
         ),
         const SizedBox(height: 20),
         Row(

@@ -1,3 +1,5 @@
+// ignore: file_names
+//plus utiliser
 class Produit {
   final String titre; //obligatoire
   final String? type; //obligatoire a changer en type unique

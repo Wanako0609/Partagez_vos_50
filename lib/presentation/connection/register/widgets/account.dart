@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/presentation/commun/textField.dart';
+import 'package:partagez_vos_50/presentation/commun/text_field.dart';
 
 import '../../../commun/constants.dart';
 
@@ -51,8 +51,6 @@ class _AccountWidgetState extends State<AccountWidget> {
             setState(() {
               errorPasswordMessage = "Vous devez avoir minimum 6 caracteres !";
             });
-          } else {
-            print("tout est bon");
           }
         }
       }

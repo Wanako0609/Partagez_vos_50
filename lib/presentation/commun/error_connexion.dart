@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/presentation/commun/constants.dart';
 
 class UserError extends StatelessWidget {
   const UserError({Key? key}) : super(key: key);

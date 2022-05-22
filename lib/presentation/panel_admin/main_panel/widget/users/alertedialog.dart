@@ -1,4 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
 
@@ -24,7 +25,7 @@ Future<Object?> setAdminDialogue(
               end: Alignment.bottomLeft,
               colors: [
                 Colors.white54,
-                Colors.black54,
+                Colors.white24,
               ],
             ),
             borderRadius: BorderRadius.circular(40),
@@ -56,7 +57,7 @@ Padding dialiog(String uid, String email, BuildContext context) {
                 style: TextStyle(
                     fontSize: 25,
                     color: mPrimaryColor,
-                    decoration: TextDecoration.underline)),
+                    decoration: TextDecoration.none)),
             SizedBox(height: 20),
             Text("Voulez vous que il devienne un administrateur ?",
                 textAlign: TextAlign.center,
@@ -72,7 +73,8 @@ Padding dialiog(String uid, String email, BuildContext context) {
               child: ElevatedButton(
                 onPressed: () {
                   DatabaseUsers(uid: uid).setAdmin(false);
-                  print("$email n'est plus administrateur");
+                  log("$email n'est plus administrateur",
+                      name: "Administration");
                   Navigator.of(context).pop();
                 },
                 child: const Text("Non", style: TextStyle(fontSize: 18)),
@@ -83,7 +85,7 @@ Padding dialiog(String uid, String email, BuildContext context) {
               child: ElevatedButton(
                 onPressed: () {
                   DatabaseUsers(uid: uid).setAdmin(true);
-                  print("$email est administrateur");
+                  log("$email est administrateur", name: "Administration");
                   Navigator.of(context).pop();
                 },
                 child: const Text("Oui", style: TextStyle(fontSize: 18)),

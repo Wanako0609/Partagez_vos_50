@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/data/models/AppUser.dart';
+import 'package:partagez_vos_50/data/models/appuser.dart';
 import 'package:partagez_vos_50/data/bdd/auth/authentication.dart';
-import 'package:partagez_vos_50/presentation/commun/routeGenerator.dart';
+import 'package:partagez_vos_50/presentation/commun/route_generator.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'presentation/commun/constants.dart';
-import 'presentation/main/screen/mainPage.dart';
+import 'presentation/main/screen/main_page.dart';
 import 'presentation/commun/appbar.dart';
 
 void main() async {

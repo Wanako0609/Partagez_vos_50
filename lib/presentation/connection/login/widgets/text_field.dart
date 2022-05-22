@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/presentation/commun/textField.dart';
-
-import '../../../commun/constants.dart';
+import 'package:partagez_vos_50/presentation/commun/text_field.dart';
 
 class TextFieldSection extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const TextFieldSection(
       {required this.errorEmailMessage,
       required this.errorPasswordMessage,

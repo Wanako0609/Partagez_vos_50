@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../widget/widget_add_img.dart';
 
+// ignore: must_be_immutable
 class AddImgVetSection extends StatefulWidget {
-  const AddImgVetSection({Key? key}) : super(key: key);
+  AddImgVetSection({Key? key, this.image}) : super(key: key);
+  Image? image;
 
   @override
   State<AddImgVetSection> createState() => _AddImgVetSectionState();
@@ -12,6 +14,6 @@ class AddImgVetSection extends StatefulWidget {
 class _AddImgVetSectionState extends State<AddImgVetSection> {
   @override
   Widget build(BuildContext context) {
-    return const AddImgWidget(size: 100);
+    return AddImgWidget(image: widget.image);
   }
 }

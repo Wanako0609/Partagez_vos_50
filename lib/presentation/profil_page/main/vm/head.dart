@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../data/bdd/auth/authentication.dart';
 import '../../../../data/bdd/firestore/database_user.dart';
-import '../../../../data/models/AppUser.dart';
+import '../../../../data/models/appuser.dart';
 import '../../../commun/error_connexion.dart';
 import '../widget/button.dart';
 import '../widget/header/image_profil.dart';
@@ -21,13 +21,13 @@ class HeaderUsers extends StatelessWidget {
       return StreamProvider<AppUser?>.value(
           value: DatabaseUsers(uid: user.uid).userData,
           initialData: null,
-          child: _HeaderUsers());
+          child: const _HeaderUsers());
     }
   }
 }
 
 class _HeaderUsers extends StatelessWidget {
-  _HeaderUsers({Key? key}) : super(key: key);
+  const _HeaderUsers({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,17 +56,16 @@ class _HeaderUsers extends StatelessWidget {
               text: "Parametre",
               page: "/userProfil/parametre"),
           const SizedBox(height: 15),
-          const ButtonUserPage(
-              icon: Icons.person_add_disabled_outlined,
-              text: "Deconnexion",
-              page: "/userProfil/deconnexion"),
+          ButtonUserPageDeconnexion(
+            icon: Icons.person_add_disabled_outlined,
+            text: "Deconnexion",
+            commande: () {
+              _auth.signOutUser();
+              Navigator.pushNamed(context, "/login");
+            },
+          ),
           const SizedBox(height: 15),
           const AdminButton(),
-          TextButton(
-              onPressed: (() {
-                _auth.signOutUser();
-              }),
-              child: const Text("deconnexion")),
         ],
       ),
     );

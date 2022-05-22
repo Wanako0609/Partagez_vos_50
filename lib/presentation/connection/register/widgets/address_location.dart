@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:partagez_vos_50/presentation/connection/register/screen/registerPage.dart';
-import 'package:partagez_vos_50/presentation/commun/textField.dart';
+import 'package:partagez_vos_50/presentation/connection/register/screen/register_page.dart';
+import 'package:partagez_vos_50/presentation/commun/text_field.dart';
 
 import '../../../commun/constants.dart';
 

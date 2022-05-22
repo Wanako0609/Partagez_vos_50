@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/panel_admin/main_panel/screen/panel_admin.dart';
 import '../../main.dart';
 import '../add_produit/screen/add_vet.dart';
-import '../add_produit/test/cropper.dart';
 import '../connection/login/screen/login.dart';
-import '../connection/register/screen/registerPage.dart';
+import '../connection/register/screen/register_page.dart';
 import '../profil_page/main/screen/profilpage.dart';
+import 'cropper_page/cropper_mobile.dart';
+import 'cropper_page/cropper_web.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -55,14 +56,20 @@ class RouteGenerator {
       case '/addVet':
         return MaterialPageRoute(
           builder: (context) {
-            return const AddVetPage();
+            return AddVetPage(image: settings.arguments as Image?);
           },
         );
 
-      case '/addVet/test':
+      case '/getImageMobile':
         return MaterialPageRoute(
           builder: (context) {
-            return const CropperScreen();
+            return const CropperScreenMobile();
+          },
+        );
+      case '/getImageWeb':
+        return MaterialPageRoute(
+          builder: (context) {
+            return const CropperScreenWeb();
           },
         );
 

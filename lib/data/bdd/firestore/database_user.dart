@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:partagez_vos_50/data/models/addresse.dart';
 
-import '../../models/AppUser.dart';
+import '../../models/appuser.dart';
 
 class DatabaseUsers {
   final String uid;
@@ -59,8 +61,9 @@ class DatabaseUsers {
     return userCollection
         .doc(uid)
         .delete()
-        .then((value) => print("User Deleted"))
-        .catchError((error) => print("Failed to delete user: $error"));
+        .then((value) => log("User Deleted", name: "DB User error"))
+        .catchError((error) =>
+            log("Failed to delete user: $error", name: "DB User error"));
   }
 
   //modification

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:partagez_vos_50/presentation/commun/constants.dart';
-import 'package:partagez_vos_50/data/models/Produit.dart';
+import 'package:partagez_vos_50/data/models/produit.dart';
 
 //firebase link
+// ignore: must_be_immutable
 class ListOfProduits extends StatelessWidget {
-  ListOfProduits({this.height = 150, this.width = 150, required this.produits});
+  ListOfProduits(
+      {Key? key, this.height = 150, this.width = 150, required this.produits})
+      : super(key: key);
 
   double height;
   double width;
